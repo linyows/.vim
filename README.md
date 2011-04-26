@@ -11,7 +11,7 @@ Please tell me your recommended vim plugins.
     $ cd .vim
     $ git submodule init
     $ git submodule update
-    $ ln -s vimrc ~/.vimrc or $ cp vimrc ~/.vimrc
+    $ ln -s ~/.vim/vimrc ~/.vimrc or $ cp ~/.vim/vimrc ~/.vimrc
     $ vim .
         :BundleInstall
 
