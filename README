@@ -13,3 +13,7 @@ $ cp vimrc ../.vimrc
 
 PLUGIN CONTROL
 https://github.com/gmarik/vundle
+:BundleSearch xxxx
+:BundleSearch! xxxx
+:BundleInstall
+:BundleClean
