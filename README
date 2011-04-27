@@ -1,4 +1,4 @@
-# HOW TO USE
+## HOW TO USE
 
 > $ sudo apt-get install ctags or $ sudo yum install ctags
 > $ cd ~/
@@ -8,7 +8,7 @@
 > $ git submodule update
 > $ ln -s ../.vimrc vimrc or $ cp vimrc ../.vimrc
 
-# PLUGIN MANAGER
+## PLUGIN MANAGER
 
 [https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
 
@@ -17,6 +17,6 @@
 > :BundleInstall
 > :BundleClean
 
-# PLUGINS
+## PLUGINS
 
 [https://github.com/linyows/.vim/blob/master/vimrc#L230](https://github.com/linyows/.vim/blob/master/vimrc#L230)
