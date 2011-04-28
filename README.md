@@ -1,6 +1,6 @@
 # README
 
-This is my vim.
+This is my vim.  
 Please tell me your recommended vim plugins.
 
 ## HOW TO USE
@@ -17,7 +17,7 @@ Please tell me your recommended vim plugins.
 
 ## PLUGIN MANAGER
 
-[https://github.com/gmarik/vundle](https://github.com/gmarik/vundle)
+<https://github.com/gmarik/vundle>
 
     :BundleSearch xxxx
     :BundleSearch! xxxx
@@ -26,4 +26,4 @@ Please tell me your recommended vim plugins.
 
 ## PLUGINS
 
-[https://github.com/linyows/.vim/blob/master/vimrc#L230](https://github.com/linyows/.vim/blob/master/vimrc#L230)
+<https://github.com/linyows/.vim/blob/master/vimrc#L230>
