@@ -1,6 +1,7 @@
 # README
 
 This is my vim.
+Please tell me your recommended vim plugins.
 
 ## HOW TO USE
 
@@ -10,7 +11,9 @@ This is my vim.
     $ cd .vim
     $ git submodule init
     $ git submodule update
-    $ ln -s ../.vimrc vimrc or $ cp vimrc ../.vimrc
+    $ ln -s vimrc ~/.vimrc or $ cp vimrc ~/.vimrc
+    $ vim .
+        :BundleInstall
 
 ## PLUGIN MANAGER
 
