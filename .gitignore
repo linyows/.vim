@@ -1,6 +1,5 @@
 .DS_Store
 .netrwhist
-tmp/backup
 *.swp
 *.cache
 *~
@@ -8,4 +7,8 @@ doc/tags/
 doc/tags-ja/
 bundle/*
 bundle/**/*
+tmp/backup/*
+tmp/backup/**/*
+tmp/swap/*
+tmp/swap/**/*
 !empty
