@@ -98,7 +98,7 @@ if has('gui_macvim')
         "winpos 70 70               " ウィンドウの左上隅の位置をピクセル単位で指定で表示
         set columns=180            " window横
         set lines=50               " window縦
-        set showtabline=2         " タブを常に表示
+        "set showtabline=2         " タブを常に表示
         set imdisable             " IMを無効化
         set transparency=10       " 透明度
         set antialias             " アンチエイリアス
@@ -278,6 +278,8 @@ Bundle 'jQuery'
 " nginx conf シンタックス
 " http://www.vim.org/scripts/script.php?script_id=1886
 Bundle 'nginx.vim'
+" markdown シンタックス
+Bundle 'https://github.com/tpope/vim-markdown.git'
 
 " Programming
 " php用インデント
