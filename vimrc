@@ -444,6 +444,16 @@ if has('multi_byte_ime') || has('xim')
     set iminsert=0 imsearch=0
 endif
 
+" ファイル保存時に拡張属性を設定するコマンド
+" see@http://d.hatena.ne.jp/uasi/20110523/1306079612
+au BufWritePost * call SetUTF8Xattr(expand("<afile>"))
+function! SetUTF8Xattr(file)
+    let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
+    if has("unix") && match(system("uname"),'Darwin') != -1 && isutf8
+        call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
+    endif
+endfunction
+
 " URLをブラウザで開く
 if has('win32')
     let BrowserPath = 'C:\Program Files\Mozilla Firefox\firefox.exe'
