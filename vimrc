@@ -302,7 +302,7 @@ Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'winmanager'
 " perldocやphpmanual等のリファレンスをvim上で見るためのプラグイン
 " https://github.com/thinca/vim-ref
-Bundle 'vim-refact'
+Bundle 'https://github.com/thinca/vim-ref.git'
 
 " Utility
 " <Leader>beでバッファのリストを表示
