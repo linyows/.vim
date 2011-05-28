@@ -266,20 +266,22 @@ Bundle 'grep.vim'
 Bundle 'eregex.vim'
 
 " Syntax
-" php5.3対応シンタックス
+" php5.3
 " http://www.vim.org/scripts/script.php?script_id=2874
 Bundle 'https://github.com/vim-scripts/php.vim--Garvin.git'
-" JavaScriptシンタックス
+" JavaScript
 " https://github.com/vim-scripts/JavaScript-syntax
 Bundle 'JavaScript-syntax'
-" jQueryシンタックス
+" jQuery
 " http://www.vim.org/scripts/script.php?script_id=2416
 Bundle 'jQuery'
-" nginx conf シンタックス
+" nginx conf
 " http://www.vim.org/scripts/script.php?script_id=1886
 Bundle 'nginx.vim'
-" markdown シンタックス
+" markdown
 Bundle 'https://github.com/tpope/vim-markdown.git'
+" jade
+Bundle 'https://github.com/digitaltoad/vim-jade.git'
 
 " Programming
 " php用インデント
