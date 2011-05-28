@@ -310,9 +310,13 @@ Bundle 'https://github.com/thinca/vim-ref.git'
 " <Leader>beでバッファのリストを表示
 " http://www.vim.org/scripts/script.php?script_id=42
 Bundle 'bufexplorer.zip'
-" すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
-" https://github.com/Shougo/unite.vim
-Bundle 'unite.vim'
+" vim scriptで実装されたanythingプラグイン
+Bundle 'https://github.com/Shougo/unite.vim.git'
+" unite plugin
+Bundle 'https://github.com/linyows/unite-li3.git'
+Bundle 'https://github.com/heavenshell/unite-zf.git'
+"Bundle 'https://github.com/heavenshell/unite-sf2.git'
+Bundle 'https://github.com/oppara/vim-unite-cake.git'
 " vim上でスクリプト実行、結果表示。コマンドモードで\r
 " https://github.com/thinca/vim-quickrun
 Bundle 'quickrun.vim'
