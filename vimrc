@@ -265,6 +265,10 @@ Bundle 'grep.vim'
 " https://github.com/othree/eregex.vim
 Bundle 'eregex.vim'
 
+" Color Scheme
+" https://files.me.com/larssmit/34o18v
+Bundle 'https://github.com/larssmit/getafe.git'
+
 " Syntax
 " php5.3
 " http://www.vim.org/scripts/script.php?script_id=2874
