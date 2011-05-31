@@ -6,11 +6,9 @@
 " https://github.com/linyows/.vim
 
 
-" Vundle {{{
+" Vundle Plugin {{{
     set nocompatible " Vi互換にしない
     filetype off
-
-    " PlguinControl
     set rtp+=~/.vim/vundle.git/
     call vundle#rc()
 
@@ -90,17 +88,11 @@
         " 補完もしてくれるvim上でshell
         Bundle 'Shougo/vimshell'
     " }}}
+
+    " Encording {{{
+        Bundle 'banyan/recognize_charcode.vim'
+    " }}}
 " }}}
-
-
-" euc-jpがlatin1で表示される対策
-if &encoding !=# 'utf-8'
-else
-    "ucs-bom,utf-8,default,latin1 デフォの状態
-    set fileencodings-=latin1
-    set fileencodings+=euc-jp
-    set fileencodings+=latin1
-endif
 
 " Appearance {{{
     set helpfile=$VIMRUNTIME/doc/help.txt
@@ -183,46 +175,62 @@ endif
 
     " ステータスラインに文字コードと改行文字を表示する
     set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-" }}}
 
-" Mac {{{
-    if has('gui_macvim')
-        if has('gui_running')
-            "winpos 70 70               " ウィンドウの左上隅の位置をピクセル単位で指定で表示
-            set columns=180            " window横
-            set lines=50               " window縦
-            "set showtabline=2         " タブを常に表示
-            set imdisable             " IMを無効化
-            set transparency=10       " 透明度
-            set antialias             " アンチエイリアス
-            set guifont=VL_Gothic:h12 " フォント
+    " Mac {{{
+        if has('gui_macvim')
+            if has('gui_running')
+                "winpos 70 70               " ウィンドウの左上隅の位置をピクセル単位で指定で表示
+                set columns=180            " window横
+                set lines=50               " window縦
+                "set showtabline=2         " タブを常に表示
+                set imdisable             " IMを無効化
+                set transparency=10       " 透明度
+                set antialias             " アンチエイリアス
+                set guifont=VL_Gothic:h12 " フォント
+            endif
         endif
-    endif
-" }}}
+    " }}}
 
-" Windows {{{
-    if has('win32')
-        set guifont=VL_Gothic:h10:cSHIFTJIS       " フォント
-        if has('printer')
-            set printfont=VL_Gothic:h10:cSHIFTJIS     " 印刷時のフォント
-            set printoptions=wrap:y,number:y,header:0 " 印刷
+    " Windows {{{
+        if has('win32')
+            set guifont=VL_Gothic:h10:cSHIFTJIS       " フォント
+            if has('printer')
+                set printfont=VL_Gothic:h10:cSHIFTJIS     " 印刷時のフォント
+                set printoptions=wrap:y,number:y,header:0 " 印刷
+            endif
         endif
-    endif
+    " }}}
 " }}}
 
 " Japanese {{{
+    " euc-jpがlatin1で表示される対策
+    if &encoding !=# 'utf-8'
+    else
+        "ucs-bom,utf-8,default,latin1 デフォの状態
+        set fileencodings-=latin1
+        set fileencodings+=euc-jp
+        set fileencodings+=latin1
+    endif
+
     if has('multi_byte_ime') || has('xim') || has('gui_macvim')
-      " IME ON時のカーソルの色を設定(設定例:紫)
-      highlight CursorIM guibg=Purple guifg=NONE
-      " 挿入モード・検索モードでのデフォルトのIME状態設定
-      set iminsert=0 imsearch=0
-      if has('xim') && has('GUI_GTK')
-        " XIMの入力開始キーを設定:
-        " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
-        "set imactivatekey=s-space
-      endif
-      " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
-      "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+        " カーソル上の文字色は文字の背景色にする。
+        " IME Off
+        "hi Cursor guifg=bg guibg=Green gui=NONE
+        hi CursorIM guifg=NONE guibg=Purple gui=NONE
+        " IME On
+        "highlight CursorIM guibg=Purple guifg=NONE
+        highlight CursorIM guibg=lightgreen guifg=NONE
+
+        " 挿入モード・検索モードでのデフォルトのIME状態設定
+        set iminsert=0 imsearch=0
+
+        "if has('xim') && has('GUI_GTK')
+            " XIMの入力開始キーを設定:
+            " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
+            "set imactivatekey=s-space
+        "endif
+        " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
+        "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
     endif
 " }}}
 
@@ -249,76 +257,86 @@ endif
     ":inoremap       インサートモード
     ":cnoremap       コマンドライン
 
-    " VIMRC
-    " 開く
-    nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
-    " 再読みこみ
-    nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
+    " .vimrc {{{
+        " 開く
+        nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
+        " 再読みこみ
+        nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
+    " }}}
 
-    " HELP
-    " helpを引きやすく
-    nnoremap <C-h> :<C-u>help<Space>
-    " カーソル下のキーワードでhelpを引く
-    nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+    " Help {{{
+        " helpを引きやすく
+        nnoremap <C-h> :<C-u>help<Space>
+        " カーソル下のキーワードでhelpを引く
+        nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+    " }}}
 
-    " SUSPEND
-    nnoremap <Space>bg :<C-u>suspend<Enter>
+    " Moving {{{
+        "nnoremap <Space>j <C-f>" 次表示
+        "nnoremap <Space>k <C-b>" 前表示
+    " }}}
 
-    " SCROLL
-    "nnoremap <Space>j <C-f>" 次表示
-    "nnoremap <Space>k <C-b>" 前表示
-    " 次表示をスムーススクロール
-    map <Space>jj :call SmoothScroll("d",2, 2)<Enter>
-    map <Space>j :call SmoothScroll("d",1, 1)<Enter>
-    " 前表示をスムーススクロール
-    map <Space>kk :call SmoothScroll("u",2, 2)<Enter>
-    map <Space>k :call SmoothScroll("u",1, 1)<Enter>
+    " Encording {{{
+        " ファイルをshift_jisで改行コードをCRLFにする
+        nnoremap <Space>w :<C-u>set ff=dos fenc=shift_jis<Enter>
+        " ファイルをutf-8で改行コードをLFにする
+        nnoremap <Space>u :<C-u>set ff=unix fenc=utf-8<Enter>
+        " euc-jpで開く
+        nnoremap <Space>e :<C-u>e ++enc=euc-jp<Enter>
+        " euc-jpにする
+        nnoremap <Space>E :<C-u>set fileencoding=euc-jp<Enter>
+    " }}}
 
-    " ENCORDING
-    " ファイルをshift_jisで改行コードをCRLFにする
-    nnoremap <Space>w :<C-u>set ff=dos fenc=shift_jis<Enter>
-    " ファイルをutf-8で改行コードをLFにする
-    nnoremap <Space>u :<C-u>set ff=unix fenc=utf-8<Enter>
-    " euc-jpで開く
-    nnoremap <Space>e :<C-u>e ++enc=euc-jp<Enter>
-    " euc-jpにする
-    nnoremap <Space>E :<C-u>set fileencoding=euc-jp<Enter>
+    " Window {{{
+        " 次のウインドウに移動
+        nnoremap <Space>l <C-w>w<Enter>
+        " 前のウインドウに移動
+        nnoremap <Space>h <C-w>p<Enter>
+        " 垂直分割でウインドウを作る
+        nnoremap <Space>n <C-w>v<Enter>
+        " ウインドウを閉じる
+        nnoremap <Space>d <C-w>q<Enter>
+        "nnoremap <Space>a :hide<Enter>" 現在のウインドウを閉じる
+        "nnoremap <Space>a :only<Enter>" ほかのウインドウをすべて閉じる
+    " }}}
 
-    " WINDOW
-    " 次のウインドウに移動
-    nnoremap <Space>l <C-w>w<Enter>
-    " 前のウインドウに移動
-    nnoremap <Space>h <C-w>p<Enter>
-    " 垂直分割でウインドウを作る
-    nnoremap <Space>n <C-w>v<Enter>
-    " ウインドウを閉じる
-    nnoremap <Space>d <C-w>q<Enter>
-    "nnoremap <Space>a :hide<Enter>" 現在のウインドウを閉じる
-    "nnoremap <Space>a :only<Enter>" ほかのウインドウをすべて閉じる
+    " Tab {{{
+        " 新規タブを開く
+        nnoremap <Space>t :<C-u>tabnew<Enter>
+        " 左のタブへ移動
+        nnoremap <Space>hh :<C-u>tabp<Enter>
+        " 右のタブへ移動
+        nnoremap <Space>ll :<C-u>tabn<Enter>
+    " }}}
 
-    " TAB
-    " 新規タブを開く
-    nnoremap <Space>t :<C-u>tabnew<Enter>
-    " 左のタブへ移動
-    nnoremap <Space>hh :<C-u>tabp<Enter>
-    " 右のタブへ移動
-    nnoremap <Space>ll :<C-u>tabn<Enter>
+    " Completion {{{
+        " omni補完
+        imap <Space>o <C-x><C-o>
+        "inoremap <A-(> ()<LEFT>" (), {} 補完
+        "inoremap <A-{> <ESC>A<SPACE>{}<Left><CR><ESC>O
+        "nnoremap <A-{> A<SPACE>{}<Left><CR><ESC>O
+    " }}}
 
-    " 検索ハイライトを非表示
-    nnoremap <Esc><Esc> :<C-u>nohlsearch<Enter>
-
-    " 空行を挿入
-    "nnoremap <Space>0 :<C-u>call append(expand('.'), '')<Cr>j
-
-    " Completion
-    " omni補完
-    imap <Space>o <C-x><C-o>
-    "inoremap <A-(> ()<LEFT>" (), {} 補完
-    "inoremap <A-{> <ESC>A<SPACE>{}<Left><CR><ESC>O
-    "nnoremap <A-{> A<SPACE>{}<Left><CR><ESC>O
+    " Others {{{
+        " 空行を挿入
+        "nnoremap <Space>0 :<C-u>call append(expand('.'), '')<Cr>j
+        " 検索ハイライトを非表示
+        nnoremap <Esc><Esc> :<C-u>nohlsearch<Enter>
+        " vimをバックグラウンドへ
+        nnoremap <Space>bg :<C-u>suspend<Enter>
+    " }}}
 " }}}
 
 " Plugin Settings {{{
+    " Scroll {{{
+        " 次表示をスムーススクロール
+        map <Space>jj :call SmoothScroll("d",2, 2)<Enter>
+        map <Space>j :call SmoothScroll("d",1, 1)<Enter>
+        " 前表示をスムーススクロール
+        map <Space>kk :call SmoothScroll("u",2, 2)<Enter>
+        map <Space>k :call SmoothScroll("u",1, 1)<Enter>
+    " }}}
+
     " bufexplorer.vim バッファ一覧を表示 {{{
         cnoremap LS BufExplorer<Enter>
     " }}}
@@ -327,7 +345,7 @@ endif
         "set imdisableactivate
     " }}}
 
-    " GIT {{{
+    " Git {{{
         let g:git_no_map_default = 1
         let g:git_command_edit = 'rightbelow vnew'
         nnoremap <Space>gd :<C-u>GitDiff --cached<Enter>
@@ -366,6 +384,14 @@ endif
     " YankRing.vim {{{
         " yank_historyファイルを不可視にする
         let g:yankring_history_file = '.yankring_history'
+        " 履歴のリストを表示
+        nnoremap Y :<C-u>YRShow<CR>
+        " 履歴をクリア
+        nnoremap <silent> ,yc :<C-u>YRClear<CR>
+        " 数値の引数を取り、履歴のリストの指定した番号のデータを取り出してペースト
+        nnoremap <silent> ,yp :<C-u>YRGetElem
+        " 数値の引数を取り、履歴のリストの指定した番号目の履歴が先頭に
+        nnoremap <silent> ,yt :<C-u>:YRSetTop
     " }}}
 
     " gundo.Vim {{{
@@ -380,7 +406,7 @@ endif
     " }}}
 
     " php-debug {{{
-    let g:php_debug_mail    = "linyows@gmail.com"
+        let g:php_debug_mail    = "linyows@gmail.com"
     " }}}
 
     " taglist {{{
@@ -404,6 +430,11 @@ endif
         let g:SrcExpl_RefreshMapKey = "<Space>" " 手動表示のMAP
         let g:SrcExpl_GoBackMapKey  = "<C-b>"   " 戻る機能のMAP
         nmap <F8> :SrcExplToggle<CR>            " Source Explorerの機能ON/OFF
+    " }}}
+
+    " NeoComplCache {{{
+        " 勝手にオムニ補完しない時間を設定
+        "let g:NeoComplCache_SkipInputTime = '1.5'
     " }}}
 
     " unite.vim {{{
@@ -434,106 +465,101 @@ endif
 " }}}
 
 " Others {{{
-" IME
-if has('multi_byte_ime') || has('xim')
-    " カーソル上の文字色は文字の背景色にする。
-    " IME が無効なとき Green
-    " IME が有効なとき Purple にする。
-    "hi Cursor guifg=bg guibg=Green gui=NONE
-    hi CursorIM guifg=NONE guibg=Purple gui=NONE
-    " IME ON時のカーソルの色を設定
-    highlight CursorIM guibg=lightgreen guifg=NONE
-    " 挿入モード・検索モードでのデフォルトのIME状態設定
-    set iminsert=0 imsearch=0
-endif
+    " Vim で"gf"をスラッシュで始まる相対URLに対応させる
+    " see@http://hail2u.net/blog/software/support-slash-started-relative-url-in-vim-gf.html
+    autocmd FileType html :setlocal path+=;/
 
-" ファイル保存時に拡張属性を設定するコマンド
-" see@http://d.hatena.ne.jp/uasi/20110523/1306079612
-au BufWritePost * call SetUTF8Xattr(expand("<afile>"))
-function! SetUTF8Xattr(file)
-    let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
-    if has("unix") && match(system("uname"),'Darwin') != -1 && isutf8
-        call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
-    endif
-endfunction
+    " Mac Quick Look {{{
+        " ファイル保存時に拡張属性を設定するコマンド
+        " see@http://d.hatena.ne.jp/uasi/20110523/1306079612
+        au BufWritePost * call SetUTF8Xattr(expand("<afile>"))
 
-" URLをブラウザで開く
-if has('win32')
-    let BrowserPath = 'C:\Program Files\Mozilla Firefox\firefox.exe'
-else
-    let BrowserPath = '/Applications/Firefox.app'
-endif
-function! AL_execute(cmd)
-  if 0 && exists('g:AL_option_nosilent') && g:AL_option_nosilent != 0
-    execute a:cmd
-  else
-    silent! execute a:cmd
-  endif
-endfunction
+        function! SetUTF8Xattr(file)
+            let isutf8 = &fileencoding == "utf-8" || ( &fileencoding == "" && &encoding == "utf-8")
+            if has("unix") && match(system("uname"),'Darwin') != -1 && isutf8
+                call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
+            endif
+        endfunction
+    " }}}
 
-function! s:AL_open_url_win32(url)
-  let url = substitute(a:url, '%', '%25', 'g')
-  if url =~# ' '
-    let url = substitute(url, ' ', '%20', 'g')
-    let url = substitute(url, '^file://', 'file:/', '')
-  endif
-  " If 'url' has % or #, all of those characters are expanded to buffer name
-  " by execute().  Below escape() suppress this.  system() does not expand
-  " those characters.
-  let url = escape(url, '%#')
-  " Start system related URL browser
-  if !has('win95') && url !~ '[&!]'
-    " for Win NT/2K/XP
-    call AL_execute('!start /min cmd /c start ' . url)
-    " MEMO: "cmd" causes some side effects.  Some strings like "%CD%" is
-    " expanded (may be environment variable?) by cmd.
-  else
-    " It is known this rundll32 method has a problem when opening URL that
-    " matches http://*.html.  It is better to use ShellExecute() API for
-    " this purpose, open some URL.  Command "cmd" and "start" on NT/2K?XP
-    " does this.
-    call AL_execute("!start rundll32 url.dll,FileProtocolHandler " . url)
-  endif
-endfunction
+    " Link Browser {{{
+        " URLをブラウザで開く
+        if has('win32')
+            let BrowserPath = 'C:\Program Files\Mozilla Firefox\firefox.exe'
+        else
+            let BrowserPath = '/Applications/Firefox.app'
+        endif
 
-" LINK BROWSER
-function! Browser()
-    let line0 = getline(".")
-    let line = matchstr(line0, "http[^ ]*")
-    if line==""
-      let line = matchstr(line0, "ftp[^ ]*")
-    endif
-    if line==""
-      let line = matchstr(line0, "file[^ ]*")
-    endif
-    exec ":silent !start \"" . g:BrowserPath . "\" \"" . line . "\""
-    call s:AL_open_url_win32(line)
-endfunction
-map <Leader>w :call Browser()<CR>
+        function! AL_execute(cmd)
+          if 0 && exists('g:AL_option_nosilent') && g:AL_option_nosilent != 0
+            execute a:cmd
+          else
+            silent! execute a:cmd
+          endif
+        endfunction
 
-" Set skip input time
-" 勝手にオムニ補完しない時間を設定
-let g:NeoComplCache_SkipInputTime = '1.5'
+        function! s:AL_open_url_win32(url)
+          let url = substitute(a:url, '%', '%25', 'g')
+          if url =~# ' '
+            let url = substitute(url, ' ', '%20', 'g')
+            let url = substitute(url, '^file://', 'file:/', '')
+          endif
+          " If 'url' has % or #, all of those characters are expanded to buffer name
+          " by execute().  Below escape() suppress this.  system() does not expand
+          " those characters.
+          let url = escape(url, '%#')
+          " Start system related URL browser
+          if !has('win95') && url !~ '[&!]'
+            " for Win NT/2K/XP
+            call AL_execute('!start /min cmd /c start ' . url)
+            " MEMO: "cmd" causes some side effects.  Some strings like "%CD%" is
+            " expanded (may be environment variable?) by cmd.
+          else
+            " It is known this rundll32 method has a problem when opening URL that
+            " matches http://*.html.  It is better to use ShellExecute() API for
+            " this purpose, open some URL.  Command "cmd" and "start" on NT/2K?XP
+            " does this.
+            call AL_execute("!start rundll32 url.dll,FileProtocolHandler " . url)
+          endif
+        endfunction
 
-" OMNI MAPPING
-function! InsertTabWrapper()
-    if pumvisible()
-        return "\<c-n>"
-    endif
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k\|<\|/'
-        return "\<tab>"
-    elseif exists('&omnifunc') && &omnifunc == ''
-        return "\<c-n>"
-    else
-        return "\<c-x>\<c-o>"
-    endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<CR>
+        function! Browser()
+            let line0 = getline(".")
+            let line = matchstr(line0, "http[^ ]*")
+            if line==""
+              let line = matchstr(line0, "ftp[^ ]*")
+            endif
+            if line==""
+              let line = matchstr(line0, "file[^ ]*")
+            endif
+            exec ":silent !start \"" . g:BrowserPath . "\" \"" . line . "\""
+            call s:AL_open_url_win32(line)
+        endfunction
+        map <Leader>w :call Browser()<CR>
+    " }}}
 
-" OMNIFUNC
-" 注意: この内容は:filetype onよりも後に記述すること。
-autocmd FileType *
-\   if &l:omnifunc == ''
-\ |   setlocal omnifunc=syntaxcomplete#Complete
-\ | endif
+    " Omni Mapping {{{
+        function! InsertTabWrapper()
+            if pumvisible()
+                return "\<c-n>"
+            endif
+            let col = col('.') - 1
+            if !col || getline('.')[col - 1] !~ '\k\|<\|/'
+                return "\<tab>"
+            elseif exists('&omnifunc') && &omnifunc == ''
+                return "\<c-n>"
+            else
+                return "\<c-x>\<c-o>"
+            endif
+        endfunction
+        inoremap <tab> <c-r>=InsertTabWrapper()<CR>
+    " }}}
+
+    " Omnifunc {{{
+        " 注意: この内容は:filetype onよりも後に記述すること。
+        autocmd FileType *
+        \   if &l:omnifunc == ''
+        \ |   setlocal omnifunc=syntaxcomplete#Complete
+        \ | endif
+    " }}}
+" }}}
