@@ -12,3 +12,4 @@ tmp/backup/**/*
 tmp/swap/*
 tmp/swap/**/*
 !empty
+!vundle
