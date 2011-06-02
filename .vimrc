@@ -83,6 +83,8 @@
         Bundle 'thinca/vim-quickrun'
         " vimからgit操作
         Bundle 'motemen/git-vim'
+        " git wrapper
+        Bundle 'tpope/vim-fugitive'
         " svn commit をした時に表示されるログの編集画面と一緒に、svn diff の内容も表示
         Bundle 'svn-diff.vim'
         " 補完もしてくれるvim上でshell
