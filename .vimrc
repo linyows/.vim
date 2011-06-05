@@ -25,7 +25,7 @@
         Bundle 'Align'
         " yankの履歴を順番に呼び出せる
         Bundle 'YankRing.vim'
-        " undo履歴を追える
+        " undo履歴を追える (need python support)
         Bundle 'Gundo'
         " 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
         Bundle 'grep.vim'
@@ -89,6 +89,8 @@
         Bundle 'svn-diff.vim'
         " 補完もしてくれるvim上でshell
         Bundle 'Shougo/vimshell'
+        " vimでevernote (need python support)
+        Bundle 'kakkyz81/evervim'
     " }}}
 
     " Encording {{{
@@ -385,7 +387,7 @@
 
     " YankRing.vim {{{
         " yank_historyファイルを不可視にする
-        let g:yankring_history_file = '.yankring_history'
+        let g:yankring_history_file = '.vim/tmp/plugin/.yankring_history'
         " 履歴のリストを表示
         nnoremap Y :<C-u>YRShow<CR>
         " 履歴をクリア
@@ -394,6 +396,10 @@
         nnoremap <silent> ,yp :<C-u>YRGetElem
         " 数値の引数を取り、履歴のリストの指定した番号目の履歴が先頭に
         nnoremap <silent> ,yt :<C-u>:YRSetTop
+    " }}}
+
+    " evervim {{{
+        let g:evervim_workdir = $HOME . '/.vim/tmp/plugin/.evervim'
     " }}}
 
     " gundo.Vim {{{
@@ -439,7 +445,12 @@
         "let g:NeoComplCache_SkipInputTime = '1.5'
     " }}}
 
+    " vimshell {{{
+        let g:vimshell_temporary_directory = expand('~/.vim/tmp/plugin/.vimshell')
+    " }}}
+
     " unite.vim {{{
+        let g:unite_data_directory = expand('~/.vim/tmp/plugin/.unite')
         " 入力モードで開始する
         "let g:unite_enable_start_insert=1
         " バッファ一覧

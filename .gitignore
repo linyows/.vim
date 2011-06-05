@@ -11,5 +11,7 @@ tmp/backup/*
 tmp/backup/**/*
 tmp/swap/*
 tmp/swap/**/*
+tmp/plugin/*
+tmp/plugin/**/*
 !empty
 !vundle
