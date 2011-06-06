@@ -386,7 +386,7 @@
     " }}}
 
     " YankRing.vim {{{
-        " yank_historyファイルを不可視にする
+        " yank_historyファイル場所指定
         let g:yankring_history_file = '.vim/tmp/plugin/.yankring_history'
         " 履歴のリストを表示
         nnoremap Y :<C-u>YRShow<CR>
@@ -399,7 +399,14 @@
     " }}}
 
     " evervim {{{
+        " 作業用ワークディレクトリ指定
         let g:evervim_workdir = $HOME . '/.vim/tmp/plugin/.evervim'
+        " ノートの一覧表示
+        nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR>
+        " タグ一覧表示
+        nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
+        " 新規ノート
+        nnoremap <silent> ,en :<C-u>EvervimCreateNote<CR>
     " }}}
 
     " gundo.Vim {{{
