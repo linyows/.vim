@@ -50,6 +50,8 @@
         Bundle 'tpope/vim-markdown'
         " jade
         Bundle 'digitaltoad/vim-jade'
+        " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+        Bundle 'scrooloose/syntastic'
     " }}}
 
     " Programming {{{
