@@ -11,6 +11,7 @@
     filetype off
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
+    Bundle 'gmarik/vundle'
 
     " Edit {{{
         " なめらかにスクロール
@@ -35,6 +36,7 @@
 
     " Color Scheme {{{
         Bundle 'larssmit/getafe'
+        Bundle 'altercation/vim-colors-solarized'
     " }}}
 
     " Syntax {{{
@@ -50,6 +52,8 @@
         Bundle 'tpope/vim-markdown'
         " jade
         Bundle 'digitaltoad/vim-jade'
+        " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+        Bundle 'scrooloose/syntastic'
     " }}}
 
     " Programming {{{
@@ -482,6 +486,19 @@
         au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
         au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
     " }}}
+
+    if has('gui_running')
+    " getafe {{{
+        "colorscheme getafe
+    " }}}
+
+    " vim-colors-solarized {{{
+        set background=dark
+        "set background=light
+        colorscheme solarized
+        "let g:solarized_termcolors=256
+    " }}}
+    endif
 " }}}
 
 " Others {{{
