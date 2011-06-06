@@ -26,4 +26,4 @@ Please tell me your recommended vim plugins.
 
 ## PLUGINS
 
-<https://github.com/linyows/.vim/blob/master/vimrc#L9>
+<https://github.com/linyows/.vim/blob/master/.vimrc#L9>
