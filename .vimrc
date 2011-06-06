@@ -36,6 +36,7 @@
 
     " Color Scheme {{{
         Bundle 'larssmit/getafe'
+        Bundle 'altercation/vim-colors-solarized'
     " }}}
 
     " Syntax {{{
@@ -478,6 +479,19 @@
         au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
         au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
     " }}}
+
+    if has('gui_running')
+    " getafe {{{
+        "colorscheme getafe
+    " }}}
+
+    " vim-colors-solarized {{{
+        set background=dark
+        "set background=light
+        colorscheme solarized
+        "let g:solarized_termcolors=256
+    " }}}
+    endif
 " }}}
 
 " Others {{{
