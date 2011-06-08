@@ -24,6 +24,8 @@
         Bundle 'xmledit'
         " 高機能整形・桁揃えプラグイン
         Bundle 'Align'
+        " フィルタリングと整形
+        Bundle 'godlygeek/tabular'
         " yankの履歴を順番に呼び出せる
         Bundle 'YankRing.vim'
         " undo履歴を追える (need python support)
