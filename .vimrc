@@ -36,6 +36,7 @@
 
     " Color Scheme {{{
         Bundle 'larssmit/getafe'
+        Bundle 'ChrisKempson/Tomorrow-Theme'
         Bundle 'altercation/vim-colors-solarized'
     " }}}
 
@@ -490,6 +491,10 @@
     if has('gui_running')
     " getafe {{{
         "colorscheme getafe
+    " }}}
+
+    " Tomorow-Theme {{{
+        "colorscheme tomorrow_theme
     " }}}
 
     " vim-colors-solarized {{{
