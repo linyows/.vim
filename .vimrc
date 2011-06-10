@@ -19,7 +19,8 @@
         " 最強コメント処理
         Bundle 'scrooloose/nerdcommenter.git'
         " 補完
-        Bundle 'AutoComplPop'
+        "Bundle 'AutoComplPop'
+        Bundle 'Shougo/neocomplcache'
         " XMLとかHTMLとかの編集機能を強化する
         Bundle 'xmledit'
         " 高機能整形・桁揃えプラグイン
@@ -82,6 +83,9 @@
         " vim scriptで実装されたanythingプラグイン
         Bundle 'Shougo/unite.vim'
         " unite plugin
+        Bundle 'tsukkee/unite-help'
+        Bundle 'h1mesuke/unite-outline'
+        Bundle 'ujihisa/neco-look'
         Bundle 'linyows/unite-li3'
         Bundle 'heavenshell/unite-zf'
         "Bundle 'heavenshell/unite-sf2'
@@ -475,6 +479,59 @@
         vmap <silent> ,ss :<C-u>VimShellSendString<CR>
         " 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
         nnoremap <silent> ,ss <S-v>:<C-u>VimShellSendString<CR>
+    " }}}
+
+    " quickrun.vim {{{
+        let mapleader = ' e'
+        au Filetype ruby nnoremap <buffer><leader> :!ruby %<Space>
+        au Filetype php nnoremap <buffer><leader> :!php %<Space>
+        au Filetype perl nnoremap <buffer><leader> :!perl %<Space>
+        au Filetype python nnoremap <buffer><leader> :!python %<Space>
+        au Filetype sh nnoremap <buffer><leader> :!sh %<Space>
+        au Filetype scala nnoremap <buffer><leader> :!scala %<Space>
+        au Filetype zsh nnoremap <buffer><leader> :!zsh %<Space>
+        au Filetype haskell nnoremap <buffer><leader> :!runghc %<Space>
+        au Filetype scheme nnoremap <buffer><leader> :!gosh %<Space>
+        au Filetype javascript nnoremap <buffer><leader> :!js %<Space>
+        au Filetype vim nnoremap <silent><leader> :source %<Return
+    " }}}
+
+    " neocomplcache.vim {{{
+        let g:acp_enableAtStartup = 0                        " Disable AutoComplPop.
+        let g:neocomplcache_enable_at_startup = 1            " Use neocomplcache.
+        let g:neocomplcache_enable_smart_case = 1            " Use smartcase.
+        let g:neocomplcache_enable_camel_case_completion = 1 " Use camel case completion
+        let g:neocomplcache_enable_underbar_completion = 1   " Use underbar completion.
+        let g:neocomplcache_min_syntax_length = 3            " Set minimum syntax keyword length.
+        let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+        " let g:neocomplcache_enable_auto_select = 1 " AutoComplPop like behavior.
+
+        " Recommended key-mappings.
+        " inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>" " doesn't work o_O
+        " <C-h>, <BS>: close popup and delete backword char.
+        inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+        inoremap <expr><C-y> neocomplcache#close_popup()
+        inoremap <expr><C-e> neocomplcache#cancel_popup()
+        " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+        inoremap <expr><C-l> neocomplcache#complete_common_string()
+
+        " Enable omni completion.
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+        " Enable heavy omni completion.
+        if !exists('g:neocomplcache_omni_patterns')
+            let g:neocomplcache_omni_patterns = {}
+        endif
+        let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+        "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+        let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+        let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
     " }}}
 
     " unite.vim {{{
