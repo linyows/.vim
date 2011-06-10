@@ -94,8 +94,12 @@
         Bundle 'tpope/vim-fugitive'
         " svn commit をした時に表示されるログの編集画面と一緒に、svn diff の内容も表示
         Bundle 'svn-diff.vim'
-        " 補完もしてくれるvim上でshell
+        " Vimでの対話コマンドの実行 (要コンパイル / Mac $ make -f make_mac.mak / Linux $ make -f make_gcc.mak)
+        Bundle 'Shougo/vimproc'
+        " 補完もしてくれるvim上でshell (要vimproc)
         Bundle 'Shougo/vimshell'
+        " vimでssh
+        Bundle 'ujihisa/vimshell-ssh'
         " vimでevernote (need python support)
         Bundle 'kakkyz81/evervim'
     " }}}
@@ -461,6 +465,16 @@
 
     " vimshell {{{
         let g:vimshell_temporary_directory = expand('~/.vim/tmp/plugin/.vimshell')
+        " シェルを起動
+        nnoremap <silent> ,vs :VimShell<CR>
+        " pythonを非同期で起動
+        nnoremap <silent> ,vp :VimShellInteractive python<CR>
+        " irbを非同期で起動
+        nnoremap <silent> ,vr :VimShellInteractive irb<CR>
+        " 非同期で開いたインタプリタに現在の行を評価させる
+        vmap <silent> ,vs :VimShellSendString<CR>
+        " 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
+        nnoremap <silent> ,vs <S-v>:VimShellSendString<CR>
     " }}}
 
     " unite.vim {{{
