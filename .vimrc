@@ -466,15 +466,15 @@
     " vimshell {{{
         let g:vimshell_temporary_directory = expand('~/.vim/tmp/plugin/.vimshell')
         " シェルを起動
-        nnoremap <silent> ,vs :VimShell<CR>
+        nnoremap <silent> ,vs :<C-u>VimShell<CR>
         " pythonを非同期で起動
-        nnoremap <silent> ,vp :VimShellInteractive python<CR>
+        nnoremap <silent> ,vp :<C-u>VimShellInteractive python<CR>
         " irbを非同期で起動
-        nnoremap <silent> ,vr :VimShellInteractive irb<CR>
+        nnoremap <silent> ,vr :<C-u>VimShellInteractive irb<CR>
         " 非同期で開いたインタプリタに現在の行を評価させる
-        vmap <silent> ,vs :VimShellSendString<CR>
+        vmap <silent> ,ss :<C-u>VimShellSendString<CR>
         " 選択中に,ss: 非同期で開いたインタプリタに選択行を評価させる
-        nnoremap <silent> ,vs <S-v>:VimShellSendString<CR>
+        nnoremap <silent> ,ss <S-v>:<C-u>VimShellSendString<CR>
     " }}}
 
     " unite.vim {{{
