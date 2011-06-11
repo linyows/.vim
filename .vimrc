@@ -37,7 +37,7 @@
         Bundle 'eregex.vim'
     " }}}
 
-    if &t_Co > 87 || has('gui_running')
+    if &t_Co >= 88 || has('gui_running')
     " Color {{{
         let g:color256 = 'true'
         " Scheme
