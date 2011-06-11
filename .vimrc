@@ -37,11 +37,20 @@
         Bundle 'eregex.vim'
     " }}}
 
-    " Color Scheme {{{
+    if &t_Co > 87 || has('gui_running')
+    " Color {{{
+        let g:color256 = 'true'
+        " Scheme
         Bundle 'larssmit/getafe'
-        Bundle 'ChrisKempson/Tomorrow-Theme'
         Bundle 'altercation/vim-colors-solarized'
+        " カラースキーム集
+        Bundle 'Slashbunny/vim-colorsamplerpack'
+        " CSSの色をプレビュー
+        Bundle 'skammer/vim-css-color'
+        " フルカラーなカラースキームを88色or256色対応ターミナル上のVimで有効化
+        Bundle 'godlygeek/csapprox'
     " }}}
+    endif
 
     " Syntax {{{
         " php5.3
@@ -133,7 +142,6 @@
     set showmatch                  " 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
     set laststatus=2               " ステータスラインを常に表示
     set backspace=indent,eol,start " バックスペースでインデントや改行を削除できるようにする
-    "set t_Co=256                   " 256 colors
     set lsp=3                      " 行間
     "set number                    " 行番号を表示
     "set cursorline                " カーソル行を強調表示
@@ -151,10 +159,9 @@
     set backupdir=~/.vim/tmp/backup " backupファイルのディレクトリ指定
     "set directory=~/.vim/tmp/swap  " swapファイルのディレクトリ指定
     set hlsearch                   " 検索結果文字列のハイライトを有効にする
-    "if &t_Co > 2 || has("gui_running")
-      "syntax on
-      "set hlsearch " 検索結果をハイライトする
-    "endif
+    if exists('g:color256')
+        set t_Co=256               " 256 colors
+    endif
 
     " 入力モード時、ステータスラインのカラーを変更
     " ctermbg   コンソールの背景色
@@ -185,7 +192,7 @@
     highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
 
     " シンタックスハイライトを有効にする
-    if has("syntax")
+    if has('syntax')
         syntax on
     endif
 
@@ -464,11 +471,6 @@
         nmap <F8> :SrcExplToggle<CR>            " Source Explorerの機能ON/OFF
     " }}}
 
-    " NeoComplCache {{{
-        " 勝手にオムニ補完しない時間を設定
-        "let g:NeoComplCache_SkipInputTime = '1.5'
-    " }}}
-
     " vimshell {{{
         let g:vimshell_temporary_directory = expand('~/.vim/tmp/plugin/.vimshell')
         " シェルを起動
@@ -506,7 +508,8 @@
         let g:neocomplcache_enable_underbar_completion = 1   " Use underbar completion.
         let g:neocomplcache_min_syntax_length = 3            " Set minimum syntax keyword length.
         let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-        " let g:neocomplcache_enable_auto_select = 1 " AutoComplPop like behavior.
+        "let g:neocomplcache_enable_auto_select = 1           " AutoComplPop like behavior.
+        "let g:NeoComplCache_SkipInputTime = '1.5'            " 勝手にオムニ補完しない時間を設定
 
         " Recommended key-mappings.
         " inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>" " doesn't work o_O
@@ -563,13 +566,22 @@
         au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
     " }}}
 
-    if has('gui_running')
+    if exists('g:color256')
+    " color_sampler_pack {{{
+        "colorscheme dw_red
+        "colorscheme ironman
+        "colorscheme ikvoli
+        "colorscheme matrix
+        "colorscheme oceandeep
+        "colorscheme summerfruit256
+    " }}}
+
     " getafe {{{
         "colorscheme getafe
     " }}}
 
     " Tomorow-Theme {{{
-        "colorscheme tomorrow_theme
+        "colorscheme Tomorrow-Night
     " }}}
 
     " vim-colors-solarized {{{
