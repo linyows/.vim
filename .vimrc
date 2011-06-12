@@ -397,6 +397,8 @@
     " }}}
 
     " NERD_commenter.vim {{{
+        "let g:NERDCreateDefaultMappings = 0 " デフォルトのマッピングを無効にする
+        "let g:NERDSpaceDelims = 1 " 行頭に1スペースを作ってコメントアウトする
         " Toggle
         map <Leader><Leader> <Leader>c<space>_
         " Minimal
@@ -486,7 +488,7 @@
     " }}}
 
     " quickrun.vim {{{
-        let mapleader = ' e'
+        "let mapleader = ' e'
         au Filetype ruby nnoremap <buffer><leader> :!ruby %<Space>
         au Filetype php nnoremap <buffer><leader> :!php %<Space>
         au Filetype perl nnoremap <buffer><leader> :!perl %<Space>
@@ -497,7 +499,7 @@
         au Filetype haskell nnoremap <buffer><leader> :!runghc %<Space>
         au Filetype scheme nnoremap <buffer><leader> :!gosh %<Space>
         au Filetype javascript nnoremap <buffer><leader> :!js %<Space>
-        au Filetype vim nnoremap <silent><leader> :source %<Return
+        au Filetype vim nnoremap <silent><leader> :source %<Return>
     " }}}
 
     " neocomplcache.vim {{{
