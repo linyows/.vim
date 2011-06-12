@@ -5,7 +5,6 @@
 " linyows <linyows@gmail.com>
 " https://github.com/linyows/.vim
 
-
 " Vundle Plugin {{{
     set nocompatible " Vi互換にしない
     filetype off
@@ -18,6 +17,8 @@
         Bundle 'Smooth-Scroll'
         " 最強コメント処理
         Bundle 'scrooloose/nerdcommenter.git'
+        " 自動閉じタグ
+        Bundle 'AutoClose'
         " 補完
         "Bundle 'AutoComplPop'
         Bundle 'Shougo/neocomplcache'
@@ -35,22 +36,9 @@
         Bundle 'grep.vim'
         " vimの正規表現をrubyやperlの正規表現な入力でできる
         Bundle 'eregex.vim'
+        " vimでackを使う
+        Bundle 'mileszs/ack.vim'
     " }}}
-
-    if &t_Co >= 88 || has('gui_running')
-    " Color {{{
-        let g:color256 = 'true'
-        " Scheme
-        Bundle 'larssmit/getafe'
-        Bundle 'altercation/vim-colors-solarized'
-        " カラースキーム集
-        Bundle 'Slashbunny/vim-colorsamplerpack'
-        " CSSの色をプレビュー
-        Bundle 'skammer/vim-css-color'
-        " フルカラーなカラースキームを88色or256色対応ターミナル上のVimで有効化
-        Bundle 'godlygeek/csapprox'
-    " }}}
-    endif
 
     " Syntax {{{
         " php5.3
@@ -82,13 +70,46 @@
         Bundle 'Source-Explorer-srcexpl.vim'
         " ディレクトリのファイル一覧、バッファ一覧、タグ一覧を別ウィンドウで表示できる
         Bundle 'winmanager'
-        " perldocやphpmanual等のリファレンスをvim上で見るためのプラグイン
+        " perldocやphpmanual等のリファレンスをvim上で見る
         Bundle 'thinca/vim-ref'
+    " }}}
+
+    " Git {{{
+        " vimからgit操作
+        Bundle 'motemen/git-vim'
+        " vimからGist
+        Bundle 'mattn/gist-vim'
+        " git wrapper
+        Bundle 'tpope/vim-fugitive'
+    " }}}
+
+    " Encording {{{
+        Bundle 'banyan/recognize_charcode.vim'
+    " }}}
+
+    " Color {{{
+    if &t_Co >= 88 || has('gui_running')
+        let g:color256 = 'true'
+        " 88/256色ターミナルでGUI用カラースキームを使用できる
+        ""Bundle 'thinca/vim-guicolorscheme'
+        " フルカラーなカラースキームを88/256色対応ターミナル上のVimで有効化
+        Bundle 'godlygeek/csapprox'
+        " Scheme
+        Bundle 'larssmit/getafe'
+        Bundle 'altercation/vim-colors-solarized'
+        Bundle 'tomasr/molokai'
+        " カラースキーム集
+        Bundle 'Slashbunny/vim-colorsamplerpack'
+        " CSSの色をプレビュー
+        Bundle 'skammer/vim-css-color'
+    endif
     " }}}
 
     " Utility {{{
         " <Leader>beでバッファのリストを表示
-        Bundle 'bufexplorer.zip'
+        "Bundle 'bufexplorer.zip'
+        " tree表示のfiler
+        Bundle 'scrooloose/nerdtree'
         " vim scriptで実装されたanythingプラグイン
         Bundle 'Shougo/unite.vim'
         " unite plugin
@@ -101,12 +122,6 @@
         Bundle 'oppara/vim-unite-cake'
         " vim上でスクリプト実行、結果表示。コマンドモードで\r
         Bundle 'thinca/vim-quickrun'
-        " vimからgit操作
-        Bundle 'motemen/git-vim'
-        " vimからGist
-        Bundle 'mattn/gist-vim'
-        " git wrapper
-        Bundle 'tpope/vim-fugitive'
         " svn commit をした時に表示されるログの編集画面と一緒に、svn diff の内容も表示
         Bundle 'svn-diff.vim'
         " Vimでの対話コマンドの実行 (要コンパイル / Mac $ make -f make_mac.mak / Linux $ make -f make_gcc.mak)
@@ -115,12 +130,11 @@
         Bundle 'Shougo/vimshell'
         " vimでssh
         Bundle 'ujihisa/vimshell-ssh'
-        " vimでevernote (need python support)
-        Bundle 'kakkyz81/evervim'
     " }}}
 
-    " Encording {{{
-        Bundle 'banyan/recognize_charcode.vim'
+    " Others {
+        " vimでevernote (need python support)
+        Bundle 'kakkyz81/evervim'
     " }}}
 " }}}
 
@@ -366,7 +380,11 @@
     " }}}
 
     " bufexplorer.vim バッファ一覧を表示 {{{
-        cnoremap LS BufExplorer<Enter>
+        "cnoremap LS BufExplorer<Enter>
+    " }}}
+
+    " nerdtree {{{
+        nnoremap <Space>tr :<C-u>NERDTreeToggle<Enter>
     " }}}
 
     " autofmt 自動的に日本語入力(IM)をオンにする機能を有効 {{{
@@ -568,6 +586,13 @@
         au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
     " }}}
 
+    " ack.vim {{{
+    " }}}
+
+    " Vundle {{{
+        cnoremap BI BundleInstall<Enter>
+    " }}}
+
     if exists('g:color256')
     " color_sampler_pack {{{
         "colorscheme dw_red
@@ -576,6 +601,10 @@
         "colorscheme matrix
         "colorscheme oceandeep
         "colorscheme summerfruit256
+    " }}}
+
+    " molokai {{{
+        "colorscheme molokai
     " }}}
 
     " getafe {{{
@@ -587,8 +616,8 @@
     " }}}
 
     " vim-colors-solarized {{{
-        set background=dark
         "set background=light
+        set background=dark
         colorscheme solarized
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
