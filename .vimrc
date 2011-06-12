@@ -591,6 +591,7 @@
 
     " Vundle {{{
         cnoremap BI BundleInstall<Enter>
+        cnoremap BC BundleClean<Enter>
     " }}}
 
     if exists('g:color256')
