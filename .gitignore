@@ -3,8 +3,8 @@
 *.swp
 *.cache
 *~
-doc/tags/
-doc/tags-ja/
+doc/tags
+doc/tags-ja
 bundle/*
 bundle/**/*
 tmp/backup/*
