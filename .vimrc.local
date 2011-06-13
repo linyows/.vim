@@ -1,0 +1,22 @@
+"   \    /   /   _   _   /   __  /    ____/
+"    \  /   /   /   /   /   __  /    /
+"   ___/ __/ __/ __/ __/ __/   _\ ______/
+"      /         /  ____/     \       /
+"     /      /  /  /       __  \     /
+"  ______/_____/______/___/   __\ ______/
+"
+" linyows <linyows@gmail.com>
+" https://github.com/linyows/.vim
+
+" Plugin Settings {{{
+    " php-documentation {{{
+        let g:pdv_cfg_Package   = "SCRAPTURE(tm)"
+        let g:pdv_cfg_Author    = "Tomohisa Oda <tomohisa@scrapture.org>"
+        let g:pdv_cfg_Copyright = "2006-2011 SCRAPTURE(tm)"
+        let g:pdv_cfg_License   = "SCRAPTURE(tm) {@link http://scrapture.org/}"
+    " }}}
+
+    " php-debug {{{
+        let g:php_debug_mail    = "linyows@gmail.com"
+    " }}}
+" }}}

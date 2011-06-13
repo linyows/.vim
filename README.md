@@ -7,13 +7,14 @@ Please tell me your recommended vim plugins.
 
     $ sudo apt-get install ctags or $ sudo yum install ctags
     $ cd ~/
-    $ git clone git://github.com/linyows/.vim.git .vim ($ git clone git://github.com/linyows/.vim.git .vim)
+    $ git clone git://github.com/linyows/.vim.git .vim
     $ cd .vim
     $ git submodule init
     $ git submodule update
-    $ ln -s ~/.vim/.vimrc ~/.vimrc or $ cp ~/.vim/.vimrc ~/.vimrc
+    $ ln -s ~/.vim/.vimrc ~/.vimrc
+    $ cp ~/.vim/.vimrc.local ~/.vimrc.local
     $ vim .
-        :BundleInstall
+        :BI
 
 ## PLUGIN MANAGER
 

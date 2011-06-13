@@ -1,4 +1,4 @@
-"   \    /   /   _   _   /   __  /    ___ /
+"   \    /   /   _   _   /   __  /    ____/
 "    \  /   /   /   /   /   __  /    /
 "   ___/ __/ __/ __/ __/ __/   _\ ______/
 "
@@ -406,7 +406,7 @@
         nnoremap <Space>gp :<C-u>Git push
     " }}}
 
-    " Align 整形 {{{
+    " Align {{{
         let g:Align_xstrlen = 3
         vmap <Space>s <Leader>tsp
         smap <Space>s <Leader>tsp
@@ -455,17 +455,6 @@
 
     " gundo.Vim {{{
         nmap U :<C-u>GundoToggle<CR>
-    " }}}
-
-    " php-documentation {{{
-        let g:pdv_cfg_Package   = "SCRAPTURE(tm)"
-        let g:pdv_cfg_Author    = "Tomohisa Oda <tomohisa@scrapture.org>"
-        let g:pdv_cfg_Copyright = "2006-2011 SCRAPTURE(tm)"
-        let g:pdv_cfg_License   = "SCRAPTURE(tm) {@link http://scrapture.org/}"
-    " }}}
-
-    " php-debug {{{
-        let g:php_debug_mail    = "linyows@gmail.com"
     " }}}
 
     " taglist {{{
@@ -723,5 +712,11 @@
         \   if &l:omnifunc == ''
         \ |   setlocal omnifunc=syntaxcomplete#Complete
         \ | endif
+    " }}}
+
+    " VimrcLocalFile {{{
+        if filereadable(expand('~/.vimrc.local'))
+            source ~/.vimrc.local
+        endif
     " }}}
 " }}}
