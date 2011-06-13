@@ -569,6 +569,7 @@
         let g:neocomplcache_enable_underbar_completion = 1   " Use underbar completion.
         let g:neocomplcache_min_syntax_length = 3            " Set minimum syntax keyword length.
         let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+        let g:neocomplcache_temporary_dir = '~/.vim/tmp/plugin/.neocon'
         "let g:neocomplcache_enable_auto_select = 1           " AutoComplPop like behavior.
         "let g:NeoComplCache_SkipInputTime = '1.5'            " 勝手にオムニ補完しない時間を設定
 
