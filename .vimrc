@@ -22,6 +22,8 @@
         " 補完
         "Bundle 'AutoComplPop'
         Bundle 'Shougo/neocomplcache'
+        " A neocomplcache plugin for English, using look command
+        Bundle 'ujihisa/neco-look'
         " XMLとかHTMLとかの編集機能を強化する
         Bundle 'xmledit'
         " 高機能整形・桁揃えプラグイン
@@ -72,6 +74,8 @@
         Bundle 'winmanager'
         " perldocやphpmanual等のリファレンスをvim上で見る
         Bundle 'thinca/vim-ref'
+        " Simple Unit Testing Framework for Vim script 
+        Bundle 'h1mesuke/vim-unittest'
     " }}}
 
     " Git {{{
@@ -106,20 +110,12 @@
     " }}}
 
     " Utility {{{
+        " vim Interface to Web API
+        Bundle 'mattn/webapi-vim'
         " <Leader>beでバッファのリストを表示
         "Bundle 'bufexplorer.zip'
         " tree表示のfiler
         Bundle 'scrooloose/nerdtree'
-        " vim scriptで実装されたanythingプラグイン
-        Bundle 'Shougo/unite.vim'
-        " unite plugin
-        Bundle 'tsukkee/unite-help'
-        Bundle 'h1mesuke/unite-outline'
-        Bundle 'ujihisa/neco-look'
-        Bundle 'linyows/unite-li3'
-        Bundle 'heavenshell/unite-zf'
-        "Bundle 'heavenshell/unite-sf2'
-        Bundle 'oppara/vim-unite-cake'
         " vim上でスクリプト実行、結果表示。コマンドモードで\r
         Bundle 'thinca/vim-quickrun'
         " svn commit をした時に表示されるログの編集画面と一緒に、svn diff の内容も表示
@@ -130,6 +126,30 @@
         Bundle 'Shougo/vimshell'
         " vimでssh
         Bundle 'ujihisa/vimshell-ssh'
+    " }}}
+
+    " Unite {
+        Bundle 'Shougo/unite.vim'
+        "see more plugin http://bit.ly/m5PKnU
+        Bundle 'Shougo/unite-grep'
+        Bundle 'tsukkee/unite-help'
+        Bundle 'h1mesuke/unite-outline'
+        Bundle 'linyows/unite-li3'
+        Bundle 'heavenshell/unite-zf'
+        "Bundle 'heavenshell/unite-sf2'
+        Bundle 'oppara/vim-unite-cake'
+        Bundle 'basyura/unite-rails'
+        Bundle 'thinca/vim-unite-history'
+        Bundle 'osyo-manga/unite-env'
+        Bundle 'tungd/unite-session'
+        Bundle 'tsukkee/unite-tag'
+        Bundle 'tacroe/unite-alias'
+        Bundle 'ujihisa/unite-font'
+        Bundle 'ujihisa/unite-colorscheme'
+        Bundle 'ujihisa/unite-locate'
+        Bundle 'mattn/unite-remotefile'
+        Bundle 'mattn/unite-mcdonalds-vim'
+        Bundle 'mattn/unite-genpatsu-fukushima-vim'
     " }}}
 
     " Others {
