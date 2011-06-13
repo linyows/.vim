@@ -13,5 +13,6 @@ tmp/swap/*
 tmp/swap/**/*
 tmp/plugin/*
 tmp/plugin/**/*
+tmp/viminfo.txt
 !empty
 !vundle

@@ -190,6 +190,7 @@
     set formatoptions+=mM          " テキスト挿入中の自動折り返しを日本語に対応させる
     set guioptions-=T              " ツールバー非表示
     "set nobackup                   " ファイル〜のバックアップファイルを作らない
+    set viminfo+=n~/.vim/tmp/viminfo.txt " viminfo保存先指定
     set backupdir=~/.vim/tmp/backup " backupファイルのディレクトリ指定
     "set directory=~/.vim/tmp/swap  " swapファイルのディレクトリ指定
     set hlsearch                   " 検索結果文字列のハイライトを有効にする
