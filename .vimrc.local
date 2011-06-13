@@ -10,10 +10,10 @@
 
 " Plugin Settings {{{
     " php-documentation {{{
-        let g:pdv_cfg_Package   = "SCRAPTURE(tm)"
-        let g:pdv_cfg_Author    = "Tomohisa Oda <tomohisa@scrapture.org>"
-        let g:pdv_cfg_Copyright = "2006-2011 SCRAPTURE(tm)"
-        let g:pdv_cfg_License   = "SCRAPTURE(tm) {@link http://scrapture.org/}"
+        let g:pdv_cfg_Package   = "LINYOWS(TM)"
+        let g:pdv_cfg_Author    = "linyows <linyows@gmail.com>"
+        let g:pdv_cfg_Copyright = "2006-2011 LINYOWS(TM)"
+        let g:pdv_cfg_License   = "LINYOWS(tm) {@link http://linyo.ws/}"
     " }}}
 
     " php-debug {{{
