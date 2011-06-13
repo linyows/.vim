@@ -373,6 +373,14 @@
         "nnoremap <A-{> A<SPACE>{}<Left><CR><ESC>O
     " }}}
 
+    " Color {{{
+        " see@http://d.hatena.ne.jp/connvoi_tyou/20080306
+        " 今、何色を表示できるのか表示
+        cnoremap CA :so $VIMRUNTIME/syntax/colortest.vim<Enter>
+        " 今の色設定を表示
+        cnoremap CS :so $VIMRUNTIME/syntax/hitest.vim<Enter>
+    " }}}
+
     " Others {{{
         " 空行を挿入
         "nnoremap <Space>0 :<C-u>call append(expand('.'), '')<Cr>j
