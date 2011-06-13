@@ -435,6 +435,7 @@
 
     " nerdtree {{{
         nnoremap <Space>tr :<C-u>NERDTreeToggle<Enter>
+        let NERDTreeShowHidden=1
     " }}}
 
     " autofmt 自動的に日本語入力(IM)をoffにする機能を有効 {{{
