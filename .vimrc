@@ -17,8 +17,8 @@
         Bundle 'Smooth-Scroll'
         " 最強コメント処理
         Bundle 'scrooloose/nerdcommenter.git'
-        " 自動閉じタグ
-        Bundle 'AutoClose'
+        " 自動閉じタグ [dump等に影響があるので使用をやめる]
+        "Bundle 'AutoClose'
         " 補完
         "Bundle 'AutoComplPop'
         Bundle 'Shougo/neocomplcache'
@@ -176,47 +176,82 @@
     if exists('g:color256')
         set t_Co=256               " 256 colors
     endif
-
-    " 入力モード時、ステータスラインのカラーを変更
-    " ctermbg   コンソールの背景色
-    " guibg     Gvimの背景色
-    " ctermfg   コンソールのテキストの色
-    " guifg     Gvimのテキストの色
-    " gui       Gvimのフォントフォーマット
-    " term      コンソールのフォントフォーマット（太字など）
-    augroup InsertHook
-        autocmd!
-        autocmd InsertEnter * highlight StatusLine ctermfg=black ctermbg=white guifg=#2E4340 guibg=#ccdc90
-        autocmd InsertLeave * highlight StatusLine ctermfg=black ctermbg=lightgray guifg=black guibg=#c2bfa5
-    augroup END
-
-    " IMEのon/offを確認できるようにする
-    "hi CursorIM  guifg=black  guibg=red  gui=NONE  ctermfg=black  ctermbg=white  cterm=reverse
-
-    " ノーマルモードでIME OFF
-    "augroup InsModeAu
-    "    autocmd!
-    "    autocmd InsertEnter,CmdwinEnter * set noimdisable
-    "    autocmd InsertLeave,CmdwinLeave * set imdisable
-    "augroup END
-
-    " 特殊文字(SpecialKey)の見える化。listcharsはlcsでも設定可能。trailは行末スペース。
-    set list
-    set listchars=tab:>.,trail:_,nbsp:%,extends:>,precedes:<
-    highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
-
     " シンタックスハイライトを有効にする
     if has('syntax')
         syntax on
     endif
 
-    " ポップアップカラー
-    hi Pmenu ctermbg=darkgray guibg=darkgray
-    hi PmenuSel ctermbg=brown ctermfg=white guibg=brown guifg=white
-    hi PmenuSbar ctermbg=black guibg=black
-
     " ステータスラインに文字コードと改行文字を表示する
-    set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+    "set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+    set statusline=%<\ %f\                             " filename
+    set statusline+=%w%h%m%r                           " options
+    set statusline+=%{fugitive#statusline()}           " current git branch ;)
+    set statusline+=\[%{&ff}]                          " fileformat
+    set statusline+=\%y                                " filetype
+    set statusline+=\%{'['.(&fenc!=''?&fenc:&enc).']'} " encoding
+    set statusline+=\[%{getcwd()}]                     " current dir
+    set statusline+=\[%p%%]                            " current position
+    "set statusline+=\ [A=\%03.3b/H=\%02.2B]            " ASCII / Hexadecimal value of char
+    set statusline+=%=%-14.(%l,%c%V%)\                 " right aligned file nav info
+
+    " Color {{{
+        " ctermbg   コンソールの背景色
+        " ctermfg   コンソールのテキストの色
+        " term      コンソールのフォントフォーマット（太字など）
+        " guibg     Gvimの背景色
+        " guifg     Gvimのテキストの色
+        " gui       Gvimのフォントフォーマット
+        " 特殊文字(SpecialKey)の見える化。listcharsはlcsでも設定可能。trailは行末スペース。
+        set list
+        set listchars=tab:>.,trail:_,nbsp:%,extends:>,precedes:<
+        highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
+
+        highlight Pmenu       ctermbg=darkgray guibg=darkgray
+        highlight PmenuSel    ctermbg=brown    ctermfg=white  guibg=brown   guifg=white
+        highlight PmenuSbar   ctermbg=black    guibg=black
+        highlight TabLine     term=reverse     cterm=reverse  ctermfg=black ctermbg=white
+        highlight TabLineSel  term=bold        cterm=bold     ctermfg=black ctermbg=white
+        highlight TabLineFill term=reverse     cterm=reverse  ctermfg=black ctermbg=white
+        " 入力モード時、ステータスラインのカラーを変更
+        augroup InsertHook
+            autocmd!
+            autocmd InsertEnter * highlight StatusLine ctermfg=black      ctermbg=lightgreen guifg=#2E4340 guibg=#ccdc90
+            autocmd InsertLeave * highlight StatusLine ctermfg=lightgreen ctermbg=black      guifg=black   guibg=#c2bfa5
+        augroup END
+    " }}}
+
+    " IME {{{
+        " IMEのon/offを確認できるようにする
+        "hi CursorIM  guifg=black  guibg=red  gui=NONE  ctermfg=black  ctermbg=white  cterm=reverse
+
+        " ノーマルモードでIME OFF
+        "augroup InsModeAu
+        "    autocmd!
+        "    autocmd InsertEnter,CmdwinEnter * set noimdisable
+        "    autocmd InsertLeave,CmdwinLeave * set imdisable
+        "augroup END
+
+        if has('multi_byte_ime') || has('xim') || has('gui_macvim')
+            " カーソル上の文字色は文字の背景色にする。
+            " IME Off
+            "hi Cursor guifg=bg guibg=Green gui=NONE
+            hi CursorIM guifg=NONE guibg=Purple gui=NONE
+            " IME On
+            "highlight CursorIM guibg=Purple guifg=NONE
+            highlight CursorIM guibg=lightgreen guifg=NONE
+
+            " 挿入モード・検索モードでのデフォルトのIME状態設定
+            set iminsert=0 imsearch=0
+
+            "if has('xim') && has('GUI_GTK')
+                " XIMの入力開始キーを設定:
+                " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
+                "set imactivatekey=s-space
+            "endif
+            " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
+            "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+        endif
+    " }}}
 
     " Mac {{{
         if has('gui_macvim')
@@ -253,27 +288,6 @@
         set fileencodings+=euc-jp
         set fileencodings+=latin1
     endif
-
-    if has('multi_byte_ime') || has('xim') || has('gui_macvim')
-        " カーソル上の文字色は文字の背景色にする。
-        " IME Off
-        "hi Cursor guifg=bg guibg=Green gui=NONE
-        hi CursorIM guifg=NONE guibg=Purple gui=NONE
-        " IME On
-        "highlight CursorIM guibg=Purple guifg=NONE
-        highlight CursorIM guibg=lightgreen guifg=NONE
-
-        " 挿入モード・検索モードでのデフォルトのIME状態設定
-        set iminsert=0 imsearch=0
-
-        "if has('xim') && has('GUI_GTK')
-            " XIMの入力開始キーを設定:
-            " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
-            "set imactivatekey=s-space
-        "endif
-        " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
-        "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
-    endif
 " }}}
 
 " Mouse {{{
@@ -291,13 +305,13 @@
 " }}}
 
 " Remap {{{
-    ":noremap        ノーマルモード、ビジュアルモード、オペレータ待機モード
-    ":vnoremap       ビジュアルモード
-    ":nnoremap       ノーマルモード
-    ":onoremap       オペレータ待機モード
-    ":noremap!       インサートモード、コマンドライン
-    ":inoremap       インサートモード
-    ":cnoremap       コマンドライン
+    ":noremap  ノーマルモード、ビジュアルモード、オペレータ待機モード
+    ":vnoremap ビジュアルモード
+    ":nnoremap ノーマルモード
+    ":onoremap オペレータ待機モード
+    ":noremap! インサートモード、コマンドライン
+    ":inoremap インサートモード
+    ":cnoremap コマンドライン
 
     " .vimrc {{{
         " 開く
@@ -387,8 +401,8 @@
         nnoremap <Space>tr :<C-u>NERDTreeToggle<Enter>
     " }}}
 
-    " autofmt 自動的に日本語入力(IM)をオンにする機能を有効 {{{
-        "set imdisableactivate
+    " autofmt 自動的に日本語入力(IM)をoffにする機能を有効 {{{
+        set imdisableactivate
     " }}}
 
     " Git {{{
