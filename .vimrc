@@ -24,6 +24,8 @@
         Bundle 'Shougo/neocomplcache'
         " A neocomplcache plugin for English, using look command
         Bundle 'ujihisa/neco-look'
+        " -- でメソッドチェーン整形
+        Bundle 'c9s/cascading.vim'
         " XMLとかHTMLとかの編集機能を強化する
         Bundle 'xmledit'
         " 高機能整形・桁揃えプラグイン
