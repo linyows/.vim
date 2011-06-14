@@ -26,6 +26,8 @@
         Bundle 'ujihisa/neco-look'
         " -- でメソッドチェーン整形
         Bundle 'c9s/cascading.vim'
+        " visually indent guide
+        Bundle 'nathanaelkane/vim-indent-guides'
         " XMLとかHTMLとかの編集機能を強化する
         Bundle 'xmledit'
         " 高機能整形・桁揃えプラグイン
@@ -76,7 +78,7 @@
         Bundle 'winmanager'
         " perldocやphpmanual等のリファレンスをvim上で見る
         Bundle 'thinca/vim-ref'
-        " Simple Unit Testing Framework for Vim script 
+        " Simple Unit Testing Framework for Vim script
         Bundle 'h1mesuke/vim-unittest'
     " }}}
 
@@ -95,7 +97,7 @@
 
     " Color {{{
     if &t_Co >= 88 || has('gui_running')
-        let g:color256 = 'true'
+        let g:isMultiColor = 'true'
         " 88/256色ターミナルでGUI用カラースキームを使用できる
         ""Bundle 'thinca/vim-guicolorscheme'
         " フルカラーなカラースキームを88/256色対応ターミナル上のVimで有効化
@@ -164,6 +166,7 @@
     set helpfile=$VIMRUNTIME/doc/help.txt
     filetype plugin indent on
     colorscheme desert
+    set background=dark
     set hidden                     " 変更中のファイルでも、保存しないで他のファイルを表示することが出来るようにする
     set title                      " ウィンドウのタイトルを変更する設定
     set ruler                      " カーソルが何行目の何列目に置かれているかを表示する
@@ -196,7 +199,7 @@
     set backupdir=~/.vim/tmp/backup " backupファイルのディレクトリ指定
     "set directory=~/.vim/tmp/swap  " swapファイルのディレクトリ指定
     set hlsearch                   " 検索結果文字列のハイライトを有効にする
-    if exists('g:color256')
+    if exists('g:isMultiColor')
         set t_Co=256               " 256 colors
     endif
     " シンタックスハイライトを有効にする
@@ -425,15 +428,31 @@
 " Plugin Settings {{{
     " Scroll {{{
         " 次表示をスムーススクロール
-        map <Space>jj :call SmoothScroll("d",2, 2)<Enter>
-        map <Space>j :call SmoothScroll("d",1, 1)<Enter>
+        nnoremap <Space>jj :call SmoothScroll("d",2, 2)<Enter>
+        nnoremap <Space>j :call SmoothScroll("d",1, 1)<Enter>
         " 前表示をスムーススクロール
-        map <Space>kk :call SmoothScroll("u",2, 2)<Enter>
-        map <Space>k :call SmoothScroll("u",1, 1)<Enter>
+        nnoremap <Space>kk :call SmoothScroll("u",2, 2)<Enter>
+        nnoremap <Space>k :call SmoothScroll("u",1, 1)<Enter>
     " }}}
 
     " bufexplorer.vim バッファ一覧を表示 {{{
         "cnoremap LS BufExplorer<Enter>
+    " }}}
+
+    " vim-indent-guides {{{
+        nnoremap <silent> <Space>id :<C-u>IndentGuidesToggle<Enter>
+        let g:indent_guides_auto_colors = 0
+        let g:indent_guides_start_level = 4
+        let g:indent_guides_guide_size = 1
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red ctermbg=3
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+        if 'dark' == &background
+            hi IndentGuidesOdd  ctermbg=black
+            hi IndentGuidesEven ctermbg=darkgrey
+        else
+            hi IndentGuidesOdd  ctermbg=white
+            hi IndentGuidesEven ctermbg=lightgrey
+        endif
     " }}}
 
     " nerdtree {{{
@@ -638,7 +657,7 @@
         cnoremap BC BundleClean<Enter>
     " }}}
 
-    if exists('g:color256')
+    if exists('g:isMultiColor')
     " color_sampler_pack {{{
         "colorscheme dw_red
         "colorscheme ironman
@@ -661,8 +680,6 @@
     " }}}
 
     " vim-colors-solarized {{{
-        "set background=light
-        set background=dark
         colorscheme solarized
         let g:solarized_termcolors=256
         let g:solarized_termtrans=1
