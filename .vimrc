@@ -44,6 +44,8 @@
         Bundle 'eregex.vim'
         " vimでackを使う
         Bundle 'mileszs/ack.vim'
+        " カーソルの下のURLを開くor単語を検索エンジンで検索
+        Bundle 'tyru/open-browser.vim'
     " }}}
 
     " Syntax {{{
@@ -657,6 +659,10 @@
         cnoremap BC BundleClean<Enter>
     " }}}
 
+    " open-browser.vim {{{
+        nmap <Leader>w :<C-u>call openbrowser#_keymapping_smart_search('n')<CR>
+    " }}}
+
     if exists('g:isMultiColor')
     " color_sampler_pack {{{
         "colorscheme dw_red
@@ -703,62 +709,6 @@
                 call system("xattr -w com.apple.TextEncoding 'utf-8;134217984' '" . a:file . "'")
             endif
         endfunction
-    " }}}
-
-    " Link Browser {{{
-        " URLをブラウザで開く
-        if has('win32')
-            let BrowserPath = 'C:\Program Files\Mozilla Firefox\firefox.exe'
-        else
-            let BrowserPath = '/Applications/Firefox.app'
-        endif
-
-        function! AL_execute(cmd)
-          if 0 && exists('g:AL_option_nosilent') && g:AL_option_nosilent != 0
-            execute a:cmd
-          else
-            silent! execute a:cmd
-          endif
-        endfunction
-
-        function! s:AL_open_url_win32(url)
-          let url = substitute(a:url, '%', '%25', 'g')
-          if url =~# ' '
-            let url = substitute(url, ' ', '%20', 'g')
-            let url = substitute(url, '^file://', 'file:/', '')
-          endif
-          " If 'url' has % or #, all of those characters are expanded to buffer name
-          " by execute().  Below escape() suppress this.  system() does not expand
-          " those characters.
-          let url = escape(url, '%#')
-          " Start system related URL browser
-          if !has('win95') && url !~ '[&!]'
-            " for Win NT/2K/XP
-            call AL_execute('!start /min cmd /c start ' . url)
-            " MEMO: "cmd" causes some side effects.  Some strings like "%CD%" is
-            " expanded (may be environment variable?) by cmd.
-          else
-            " It is known this rundll32 method has a problem when opening URL that
-            " matches http://*.html.  It is better to use ShellExecute() API for
-            " this purpose, open some URL.  Command "cmd" and "start" on NT/2K?XP
-            " does this.
-            call AL_execute("!start rundll32 url.dll,FileProtocolHandler " . url)
-          endif
-        endfunction
-
-        function! Browser()
-            let line0 = getline(".")
-            let line = matchstr(line0, "http[^ ]*")
-            if line==""
-              let line = matchstr(line0, "ftp[^ ]*")
-            endif
-            if line==""
-              let line = matchstr(line0, "file[^ ]*")
-            endif
-            exec ":silent !start \"" . g:BrowserPath . "\" \"" . line . "\""
-            call s:AL_open_url_win32(line)
-        endfunction
-        map <Leader>w :call Browser()<CR>
     " }}}
 
     " Omni Mapping {{{
