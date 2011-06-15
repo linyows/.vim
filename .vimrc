@@ -46,6 +46,8 @@
         Bundle 'mileszs/ack.vim'
         " カーソルの下のURLを開くor単語を検索エンジンで検索
         Bundle 'tyru/open-browser.vim'
+        " text-object拡張
+        "Bundle 'tpope/vim-surround'
     " }}}
 
     " Syntax {{{
