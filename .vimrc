@@ -112,8 +112,8 @@
         Bundle 'tomasr/molokai'
         " カラースキーム集
         Bundle 'Slashbunny/vim-colorsamplerpack'
-        " CSSの色をプレビュー
-        Bundle 'skammer/vim-css-color'
+        " CSSの色をプレビュー (重い？)
+        "Bundle 'skammer/vim-css-color'
     endif
     " }}}
 
@@ -169,8 +169,25 @@
 " Appearance {{{
     set helpfile=$VIMRUNTIME/doc/help.txt
     filetype plugin indent on
-    colorscheme desert
+
     set background=dark
+    if exists('g:isMultiColor')
+        set t_Co=256
+        "colorscheme dw_red
+        "colorscheme ironman
+        "colorscheme ikvoli
+        "colorscheme matrix
+        "colorscheme oceandeep
+        "colorscheme summerfruit256
+        "colorscheme molokai
+        "colorscheme getafe
+        "colorscheme Tomorrow-Night
+        colorscheme solarized
+        let g:solarized_termcolors=256
+    else
+        colorscheme desert
+    endif
+
     set hidden                     " 変更中のファイルでも、保存しないで他のファイルを表示することが出来るようにする
     set title                      " ウィンドウのタイトルを変更する設定
     set ruler                      " カーソルが何行目の何列目に置かれているかを表示する
@@ -203,9 +220,6 @@
     set backupdir=~/.vim/tmp/backup " backupファイルのディレクトリ指定
     "set directory=~/.vim/tmp/swap  " swapファイルのディレクトリ指定
     set hlsearch                   " 検索結果文字列のハイライトを有効にする
-    if exists('g:isMultiColor')
-        set t_Co=256               " 256 colors
-    endif
     " シンタックスハイライトを有効にする
     if has('syntax')
         syntax on
@@ -664,35 +678,6 @@
     " open-browser.vim {{{
         nmap <Leader>w :<C-u>call openbrowser#_keymapping_smart_search('n')<CR>
     " }}}
-
-    if exists('g:isMultiColor')
-    " color_sampler_pack {{{
-        "colorscheme dw_red
-        "colorscheme ironman
-        "colorscheme ikvoli
-        "colorscheme matrix
-        "colorscheme oceandeep
-        "colorscheme summerfruit256
-    " }}}
-
-    " molokai {{{
-        "colorscheme molokai
-    " }}}
-
-    " getafe {{{
-        "colorscheme getafe
-    " }}}
-
-    " Tomorow-Theme {{{
-        "colorscheme Tomorrow-Night
-    " }}}
-
-    " vim-colors-solarized {{{
-        colorscheme solarized
-        let g:solarized_termcolors=256
-        let g:solarized_termtrans=1
-    " }}}
-    endif
 " }}}
 
 " Others {{{
