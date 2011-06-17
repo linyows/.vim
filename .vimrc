@@ -99,24 +99,6 @@
         Bundle 'banyan/recognize_charcode.vim'
     " }}}
 
-    " Color {{{
-    if &t_Co >= 88 || has('gui_running')
-        let g:isMultiColor = 'true'
-        " 88/256色ターミナルでGUI用カラースキームを使用できる
-        ""Bundle 'thinca/vim-guicolorscheme'
-        " フルカラーなカラースキームを88/256色対応ターミナル上のVimで有効化
-        Bundle 'godlygeek/csapprox'
-        " Scheme
-        Bundle 'larssmit/getafe'
-        Bundle 'altercation/vim-colors-solarized'
-        Bundle 'tomasr/molokai'
-        " カラースキーム集
-        Bundle 'Slashbunny/vim-colorsamplerpack'
-        " CSSの色をプレビュー (重い？)
-        "Bundle 'skammer/vim-css-color'
-    endif
-    " }}}
-
     " Utility {{{
         " vim Interface to Web API
         Bundle 'mattn/webapi-vim'
@@ -164,6 +146,24 @@
         " vimでevernote (need python support)
         Bundle 'kakkyz81/evervim'
     " }}}
+
+    " Color {{{
+    if &t_Co >= 88 || has('gui_running')
+        let g:isMultiColor = 'true'
+        " 88/256色ターミナルでGUI用カラースキームを使用できる
+        ""Bundle 'thinca/vim-guicolorscheme'
+        " フルカラーなカラースキームを88/256色対応ターミナル上のVimで有効化
+        Bundle 'godlygeek/csapprox'
+        " Scheme
+        Bundle 'larssmit/getafe'
+        Bundle 'altercation/vim-colors-solarized'
+        Bundle 'tomasr/molokai'
+        " カラースキーム集
+        Bundle 'Slashbunny/vim-colorsamplerpack'
+        " CSSの色をプレビュー (重い？)
+        "Bundle 'skammer/vim-css-color'
+    endif
+    " }}}
 " }}}
 
 " Appearance {{{
@@ -176,14 +176,14 @@
         "colorscheme dw_red
         "colorscheme ironman
         "colorscheme ikvoli
-        "colorscheme matrix
+        colorscheme matrix
         "colorscheme oceandeep
         "colorscheme summerfruit256
         "colorscheme molokai
         "colorscheme getafe
         "colorscheme Tomorrow-Night
-        colorscheme solarized
-        let g:solarized_termcolors=256
+        "colorscheme solarized
+        "let g:solarized_termcolors=256
     else
         colorscheme desert
     endif
