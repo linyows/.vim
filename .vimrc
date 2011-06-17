@@ -84,6 +84,8 @@
         Bundle 'thinca/vim-ref'
         " Simple Unit Testing Framework for Vim script
         Bundle 'h1mesuke/vim-unittest'
+        " Vim/Ruby Configuration Files
+        Bundle 'vim-ruby/vim-ruby'
     " }}}
 
     " Git {{{
@@ -548,7 +550,7 @@
         nmap U :<C-u>GundoToggle<CR>
     " }}}
 
-    " taglist {{{
+    " taglist.vim {{{
         " 関数一覧
         set tags=tags
         "set tags+=~/.tags
@@ -558,6 +560,8 @@
         let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示
         let Tlist_Enable_Fold_Column = 1          " 折りたたみ
         let Tlist_Auto_Open = 1                   " 自動表示
+        let Tlist_Auto_Update = 1
+        let Tlist_WinWidth = 50
         "map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
     " }}}
 
