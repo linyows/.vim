@@ -84,6 +84,8 @@
         Bundle 'thinca/vim-ref'
         " Simple Unit Testing Framework for Vim script
         Bundle 'h1mesuke/vim-unittest'
+        " Vim/Ruby Configuration Files
+        Bundle 'vim-ruby/vim-ruby'
     " }}}
 
     " Git {{{
@@ -97,24 +99,6 @@
 
     " Encording {{{
         Bundle 'banyan/recognize_charcode.vim'
-    " }}}
-
-    " Color {{{
-    if &t_Co >= 88 || has('gui_running')
-        let g:isMultiColor = 'true'
-        " 88/256色ターミナルでGUI用カラースキームを使用できる
-        ""Bundle 'thinca/vim-guicolorscheme'
-        " フルカラーなカラースキームを88/256色対応ターミナル上のVimで有効化
-        Bundle 'godlygeek/csapprox'
-        " Scheme
-        Bundle 'larssmit/getafe'
-        Bundle 'altercation/vim-colors-solarized'
-        Bundle 'tomasr/molokai'
-        " カラースキーム集
-        Bundle 'Slashbunny/vim-colorsamplerpack'
-        " CSSの色をプレビュー (重い？)
-        "Bundle 'skammer/vim-css-color'
-    endif
     " }}}
 
     " Utility {{{
@@ -164,6 +148,24 @@
         " vimでevernote (need python support)
         Bundle 'kakkyz81/evervim'
     " }}}
+
+    " Color {{{
+    if &t_Co >= 88 || has('gui_running')
+        let g:isMultiColor = 'true'
+        " 88/256色ターミナルでGUI用カラースキームを使用できる
+        ""Bundle 'thinca/vim-guicolorscheme'
+        " フルカラーなカラースキームを88/256色対応ターミナル上のVimで有効化
+        Bundle 'godlygeek/csapprox'
+        " Scheme
+        Bundle 'larssmit/getafe'
+        Bundle 'altercation/vim-colors-solarized'
+        Bundle 'tomasr/molokai'
+        " カラースキーム集
+        Bundle 'Slashbunny/vim-colorsamplerpack'
+        " CSSの色をプレビュー (重い？)
+        "Bundle 'skammer/vim-css-color'
+    endif
+    " }}}
 " }}}
 
 " Appearance {{{
@@ -176,14 +178,14 @@
         "colorscheme dw_red
         "colorscheme ironman
         "colorscheme ikvoli
-        "colorscheme matrix
+        colorscheme matrix
         "colorscheme oceandeep
         "colorscheme summerfruit256
         "colorscheme molokai
         "colorscheme getafe
         "colorscheme Tomorrow-Night
-        colorscheme solarized
-        let g:solarized_termcolors=256
+        "colorscheme solarized
+        "let g:solarized_termcolors=256
     else
         colorscheme desert
     endif
@@ -548,7 +550,7 @@
         nmap U :<C-u>GundoToggle<CR>
     " }}}
 
-    " taglist {{{
+    " taglist.vim {{{
         " 関数一覧
         set tags=tags
         "set tags+=~/.tags
@@ -558,6 +560,8 @@
         let Tlist_Use_Right_Window = 1            " 右側でtaglistのウィンドーを表示
         let Tlist_Enable_Fold_Column = 1          " 折りたたみ
         let Tlist_Auto_Open = 1                   " 自動表示
+        let Tlist_Auto_Update = 1
+        let Tlist_WinWidth = 50
         "map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
     " }}}
 
