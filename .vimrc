@@ -196,6 +196,7 @@
         colorscheme desert
     endif
 
+    set textwidth=0                " 自動折り返しをoffにするため無制限に設定 (段落整形したい時はgq,gwとかすればいい)
     set hidden                     " 変更中のファイルでも、保存しないで他のファイルを表示することが出来るようにする
     set title                      " ウィンドウのタイトルを変更する設定
     set ruler                      " カーソルが何行目の何列目に置かれているかを表示する
