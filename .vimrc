@@ -86,6 +86,12 @@
         Bundle 'h1mesuke/vim-unittest'
         " Vim/Ruby Configuration Files
         Bundle 'vim-ruby/vim-ruby'
+        " ファイル切替えなど色んな便利機能
+        Bundle 'tpope/vim-rails'
+        " CoffeeScript support for vim
+        Bundle 'kchmck/vim-coffee-script'
+        " Vim runtime files for Haml, Sass, and SCSS 
+        Bundle 'tpope/vim-haml'
     " }}}
 
     " Git {{{
