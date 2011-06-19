@@ -683,6 +683,15 @@
         au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
     " }}}
 
+    " unite-plugins {{{
+        cnoremap UO :Unite help<Enter>
+        cnoremap UO :Unite outline<Enter>
+        cnoremap UC :Unite colorscheme<Enter>
+        cnoremap UF :Unite font<Enter>
+        cnoremap UB :Unite hamburger<Enter>
+        cnoremap UD :Unite drink<Enter>
+    " }}}
+
     " ack.vim {{{
     " }}}
 
