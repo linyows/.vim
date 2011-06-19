@@ -181,17 +181,21 @@
     set background=dark
     if exists('g:isMultiColor')
         set t_Co=256
-        "colorscheme dw_red
-        "colorscheme ironman
-        "colorscheme ikvoli
-        colorscheme matrix
-        "colorscheme oceandeep
-        "colorscheme summerfruit256
-        "colorscheme molokai
-        "colorscheme getafe
-        "colorscheme Tomorrow-Night
-        "colorscheme solarized
-        "let g:solarized_termcolors=256
+        try
+            "colorscheme dw_red
+            "colorscheme ironman
+            "colorscheme ikvoli
+            colorscheme matrix
+            "colorscheme oceandeep
+            "colorscheme summerfruit256
+            "colorscheme molokai
+            "colorscheme getafe
+            "colorscheme Tomorrow-Night
+            "colorscheme solarized
+            "let g:solarized_termcolors=256
+        catch /^Vim\%((\a\+)\)\=:E185/
+            colorscheme desert
+        endtry
     else
         colorscheme desert
     endif
