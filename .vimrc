@@ -748,6 +748,13 @@
         \ | endif
     " }}}
 
+    " Save Option {{{
+        " 行末の空白除去
+        autocmd BufWritePre * :%s/\s\+$//ge
+        " tabをスペースに変換
+        autocmd BufWritePre * :%s/\t/  /ge
+    " }}}
+
     " VimrcLocalFile {{{
         if filereadable(expand('~/.vimrc.local'))
             source ~/.vimrc.local
