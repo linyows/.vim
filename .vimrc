@@ -48,6 +48,8 @@
         Bundle 'tyru/open-browser.vim'
         " text-object拡張
         "Bundle 'tpope/vim-surround'
+        " スニペット機能をvimで(snippetsEmuより使いやすい)
+        Bundle 'msanders/snipmate.vim'
     " }}}
 
     " Syntax {{{
@@ -90,7 +92,7 @@
         Bundle 'tpope/vim-rails'
         " CoffeeScript support for vim
         Bundle 'kchmck/vim-coffee-script'
-        " Vim runtime files for Haml, Sass, and SCSS 
+        " Vim runtime files for Haml, Sass, and SCSS
         Bundle 'tpope/vim-haml'
     " }}}
 
