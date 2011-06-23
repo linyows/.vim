@@ -540,7 +540,7 @@
         " yank_historyファイル場所指定
         let g:yankring_history_file = '.vim/tmp/plugin/.yankring_history'
         " 履歴のリストを表示
-        nnoremap Y :<C-u>YRShow<CR>
+        nmap Y :<C-u>YRShow<CR>
         " 履歴をクリア
         nnoremap <silent> ,yc :<C-u>YRClear<CR>
         " 数値の引数を取り、履歴のリストの指定した番号のデータを取り出してペースト
