@@ -49,7 +49,8 @@
         " text-object拡張
         "Bundle 'tpope/vim-surround'
         " スニペット機能をvimで(snippetsEmuより使いやすい)
-        Bundle 'msanders/snipmate.vim'
+        "Bundle 'msanders/snipmate.vim'
+        "Bundle 'linyows/snipmate.vim'
     " }}}
 
     " Syntax {{{
@@ -640,6 +641,11 @@
         " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
         inoremap <expr><C-l> neocomplcache#complete_common_string()
 
+        let tmp = '~/.vim/bundle/snipmate.vim/snippets'
+        if isdirectory('tmp')
+            let g:neocomplcache_snippets_dir = tmp;
+        endif
+
         " Enable omni completion.
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -697,6 +703,11 @@
     " ack.vim {{{
     " }}}
 
+    " snipmate.vim {{{
+        "inoremap <silent> <c-b> <c-r>=TriggerSnippet()<cr>
+        "snoremap <silent> <c-b> <esc>i<right><c-r>=TriggerSnippet()<cr>
+    " }}}
+
     " Vundle {{{
         cnoremap BI BundleInstall<Enter>
         cnoremap BC BundleClean<Enter>
@@ -725,7 +736,7 @@
         endfunction
     " }}}
 
-    " Omni Mapping {{{
+    " Omni Mapping <tab>で補完 {{{
         function! InsertTabWrapper()
             if pumvisible()
                 return "\<c-n>"
@@ -739,7 +750,7 @@
                 return "\<c-x>\<c-o>"
             endif
         endfunction
-        inoremap <tab> <c-r>=InsertTabWrapper()<CR>
+        inoremap <silent> <tab> <c-r>=InsertTabWrapper()<CR>
     " }}}
 
     " Omnifunc {{{
