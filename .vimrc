@@ -34,6 +34,8 @@
         Bundle 'Align'
         " フィルタリングと整形
         Bundle 'godlygeek/tabular'
+        " マルチバイト対応の整形
+        Bundle 'h1mesuke/vim-alignta'
         " yankの履歴を順番に呼び出せる
         Bundle 'YankRing.vim'
         " undo履歴を追える (need python support)
@@ -642,7 +644,7 @@
         inoremap <expr><C-l> neocomplcache#complete_common_string()
 
         let tmp = '~/.vim/bundle/snipmate.vim/snippets'
-        if isdirectory('tmp')
+        if isdirectory(tmp)
             let g:neocomplcache_snippets_dir = tmp;
         endif
 
