@@ -194,6 +194,7 @@
             "colorscheme oceandeep
             "colorscheme summerfruit256
             "colorscheme molokai
+            "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
             "colorscheme solarized
@@ -447,9 +448,9 @@
     " Color {{{
         " see@http://d.hatena.ne.jp/connvoi_tyou/20080306
         " 今、何色を表示できるのか表示
-        cnoremap CA :so $VIMRUNTIME/syntax/colortest.vim<Enter>
+        cnoremap CA so $VIMRUNTIME/syntax/colortest.vim<Enter>
         " 今の色設定を表示
-        cnoremap CS :so $VIMRUNTIME/syntax/hitest.vim<Enter>
+        cnoremap CS so $VIMRUNTIME/syntax/hitest.vim<Enter>
     " }}}
 
     " Others {{{
@@ -694,12 +695,12 @@
     " }}}
 
     " unite-plugins {{{
-        cnoremap UO :Unite help<Enter>
-        cnoremap UO :Unite outline<Enter>
-        cnoremap UC :Unite colorscheme<Enter>
-        cnoremap UF :Unite font<Enter>
-        cnoremap UB :Unite hamburger<Enter>
-        cnoremap UD :Unite drink<Enter>
+        cnoremap UO Unite help<Enter>
+        cnoremap UO Unite outline<Enter>
+        cnoremap UC Unite colorscheme<Enter>
+        cnoremap UF Unite font<Enter>
+        cnoremap UB Unite hamburger<Enter>
+        cnoremap UD Unite drink<Enter>
     " }}}
 
     " ack.vim {{{
