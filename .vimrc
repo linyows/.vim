@@ -194,6 +194,7 @@
             "colorscheme oceandeep
             "colorscheme summerfruit256
             "colorscheme molokai
+            "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
             "colorscheme solarized
@@ -447,9 +448,9 @@
     " Color {{{
         " see@http://d.hatena.ne.jp/connvoi_tyou/20080306
         " 今、何色を表示できるのか表示
-        cnoremap CA :so $VIMRUNTIME/syntax/colortest.vim<Enter>
+        cnoremap CA so $VIMRUNTIME/syntax/colortest.vim<Enter>
         " 今の色設定を表示
-        cnoremap CS :so $VIMRUNTIME/syntax/hitest.vim<Enter>
+        cnoremap CS so $VIMRUNTIME/syntax/hitest.vim<Enter>
     " }}}
 
     " Others {{{
@@ -629,7 +630,7 @@
         let g:neocomplcache_enable_underbar_completion = 1   " Use underbar completion.
         let g:neocomplcache_min_syntax_length = 3            " Set minimum syntax keyword length.
         let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-        let g:neocomplcache_temporary_dir = '~/.vim/tmp/plugin/.neocon'
+        let g:neocomplcache_temporary_dir = $HOME . '/.vim/tmp/plugin/.neocon'
         "let g:neocomplcache_enable_auto_select = 1           " AutoComplPop like behavior.
         "let g:NeoComplCache_SkipInputTime = '1.5'            " 勝手にオムニ補完しない時間を設定
 
@@ -694,12 +695,12 @@
     " }}}
 
     " unite-plugins {{{
-        cnoremap UO :Unite help<Enter>
-        cnoremap UO :Unite outline<Enter>
-        cnoremap UC :Unite colorscheme<Enter>
-        cnoremap UF :Unite font<Enter>
-        cnoremap UB :Unite hamburger<Enter>
-        cnoremap UD :Unite drink<Enter>
+        cnoremap UO Unite help<Enter>
+        cnoremap UO Unite outline<Enter>
+        cnoremap UC Unite colorscheme<Enter>
+        cnoremap UF Unite font<Enter>
+        cnoremap UB Unite hamburger<Enter>
+        cnoremap UD Unite drink<Enter>
     " }}}
 
     " ack.vim {{{
