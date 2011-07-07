@@ -713,6 +713,7 @@
 
     " Vundle {{{
         cnoremap BI BundleInstall<Enter>
+        cnoremap B! BundleInstall!<Enter>
         cnoremap BC BundleClean<Enter>
     " }}}
 
