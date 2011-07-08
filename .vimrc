@@ -321,7 +321,7 @@
         if has('gui_macvim')
             if has('gui_running')
                 " full screen
-                "set fuoptions=maxvert,maxhorz
+                set fuoptions=maxvert,maxhorz
                 au GUIEnter * set fullscreen
                 " hidden scroll bar
                 set guioptions-=r
