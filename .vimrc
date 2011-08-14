@@ -190,10 +190,10 @@
             "colorscheme dw_red
             "colorscheme ironman
             "colorscheme ikvoli
-            colorscheme matrix
+            "colorscheme matrix
             "colorscheme oceandeep
             "colorscheme summerfruit256
-            "colorscheme molokai
+            colorscheme molokai
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
@@ -527,7 +527,7 @@
 
     " NERD_commenter.vim {{{
         "let g:NERDCreateDefaultMappings = 0 " デフォルトのマッピングを無効にする
-        "let g:NERDSpaceDelims = 1 " 行頭に1スペースを作ってコメントアウトする
+        let g:NERDSpaceDelims = 1 " 行頭に1スペースを作ってコメントアウトする
         " Toggle
         map <Leader><Leader> <Leader>c<space>_
         " Minimal
