@@ -157,7 +157,7 @@
 
     " Others {
         " vimでevernote (need python support)
-        Bundle 'kakkyz81/evervim'
+        "Bundle 'kakkyz81/evervim'
     " }}}
 
     " Color {{{
