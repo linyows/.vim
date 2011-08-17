@@ -579,7 +579,7 @@
         let Tlist_Enable_Fold_Column = 1          " 折りたたみ
         let Tlist_Auto_Open = 1                   " 自動表示
         let Tlist_Auto_Update = 1
-        let Tlist_WinWidth = 50
+        let Tlist_WinWidth = 30
         "map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
     " }}}
 
