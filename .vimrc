@@ -157,7 +157,7 @@
 
     " Others {
         " vimでevernote (need python support)
-        Bundle 'kakkyz81/evervim'
+        "Bundle 'kakkyz81/evervim'
     " }}}
 
     " Color {{{
@@ -190,10 +190,10 @@
             "colorscheme dw_red
             "colorscheme ironman
             "colorscheme ikvoli
-            colorscheme matrix
+            "colorscheme matrix
             "colorscheme oceandeep
             "colorscheme summerfruit256
-            "colorscheme molokai
+            colorscheme molokai
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
@@ -557,7 +557,7 @@
 
     " NERD_commenter.vim {{{
         "let g:NERDCreateDefaultMappings = 0 " デフォルトのマッピングを無効にする
-        "let g:NERDSpaceDelims = 1 " 行頭に1スペースを作ってコメントアウトする
+        let g:NERDSpaceDelims = 1 " 行頭に1スペースを作ってコメントアウトする
         " Toggle
         map <Leader><Leader> <Leader>c<space>_
         " Minimal
@@ -609,7 +609,7 @@
         let Tlist_Enable_Fold_Column = 1          " 折りたたみ
         let Tlist_Auto_Open = 1                   " 自動表示
         let Tlist_Auto_Update = 1
-        let Tlist_WinWidth = 50
+        let Tlist_WinWidth = 30
         "map <silent> <leader>tl :Tlist<CR>        " taglistを開くショットカットキー
     " }}}
 
