@@ -366,6 +366,7 @@
     set mouse=a      " マウスモード有効
     set nomousefocus " マウスの移動でフォーカスを自動的に切替えない (mousefocus:切替る)
     set mousehide    " 入力時にマウスポインタを隠す (nomousehide:隠さない)
+    set ttymouse=xterm2 " screenでマウスを使う
 " }}}
 
 " Searching {{{
