@@ -193,10 +193,11 @@
             "colorscheme matrix
             "colorscheme oceandeep
             "colorscheme summerfruit256
-            " colorscheme molokai
+            "colorscheme molokai
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
+            call togglebg#map("<F5>")
             let g:solarized_termcolors=256
             let g:solarized_termtrans=1
             let g:solarized_degrade=0
@@ -373,6 +374,7 @@
     set mouse=a      " マウスモード有効
     set nomousefocus " マウスの移動でフォーカスを自動的に切替えない (mousefocus:切替る)
     set mousehide    " 入力時にマウスポインタを隠す (nomousehide:隠さない)
+    set ttymouse=xterm2 " screenでマウスを使う
 " }}}
 
 " Searching {{{
@@ -381,6 +383,35 @@
     set incsearch   " インクリメンタルサーチ 検索文字を打っている途中で、目的の単語を見つけたらEnterを押下 検索をやめたい場合はEscを押下
     set wrapscan    " 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
     set noincsearch " 検索文字列入力時に順次対象文字列にヒットさせない
+" }}}
+
+" Indent {{{
+    autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType aspvbs     setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType css        setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType diff       setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType html       setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType javascript setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType vb         setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType wsh        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType xml        setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
 " }}}
 
 " Remap {{{
