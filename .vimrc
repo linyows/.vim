@@ -193,12 +193,19 @@
             "colorscheme matrix
             "colorscheme oceandeep
             "colorscheme summerfruit256
-            colorscheme molokai
+            " colorscheme molokai
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
-            "colorscheme solarized
-            "let g:solarized_termcolors=256
+            let g:solarized_termcolors=256
+            let g:solarized_termtrans=1
+            let g:solarized_degrade=0
+            let g:solarized_bold=1
+            let g:solarized_underline=1
+            let g:solarized_italic=1
+            let g:solarized_contrast="normal"
+            let g:solarized_visibility="normal"
+            colorscheme solarized
         catch /^Vim\%((\a\+)\)\=:E185/
             colorscheme desert
         endtry
