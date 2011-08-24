@@ -197,6 +197,7 @@
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
+            call togglebg#map("<F5>")
             let g:solarized_termcolors=256
             let g:solarized_termtrans=1
             let g:solarized_degrade=0
