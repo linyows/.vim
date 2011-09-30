@@ -97,6 +97,8 @@
         Bundle 'kchmck/vim-coffee-script'
         " Vim runtime files for Haml, Sass, and SCSS
         Bundle 'tpope/vim-haml'
+        " JSLint fork (need SpiderMonkey, Rhino, Node)
+        Bundle 'basyura/jslint.vim'
     " }}}
 
     " Git {{{
@@ -748,6 +750,19 @@
     " snipmate.vim {{{
         "inoremap <silent> <c-b> <c-r>=TriggerSnippet()<cr>
         "snoremap <silent> <c-b> <esc>i<right><c-r>=TriggerSnippet()<cr>
+    " }}}
+
+    " jslint.vim {{{
+        augroup MyGroup
+          autocmd! MyGroup
+          autocmd FileType javascript call s:javascript_filetype_settings()
+        augroup END
+
+        function! s:javascript_filetype_settings()
+          autocmd BufLeave     <buffer> call jslint#clear()
+          autocmd BufWritePost <buffer> call jslint#check()
+          autocmd CursorMoved  <buffer> call jslint#message()
+        endfunction
     " }}}
 
     " Vundle {{{
