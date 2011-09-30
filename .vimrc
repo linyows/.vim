@@ -242,6 +242,7 @@
     set smartindent                " 新しい行を作ったときに高度な自動インデントを行う
     set formatoptions+=mM          " テキスト挿入中の自動折り返しを日本語に対応させる
     set guioptions-=T              " ツールバー非表示
+    set virtualedit=block          " 矩形ビジュアルモードで文字の無いところにもカーソル移動
     set clipboard=unnamed,autoselect " yank時にclipboardにcopy (要+clipboard)
     "set nobackup                   " ファイル〜のバックアップファイルを作らない
     set viminfo+=n~/.vim/tmp/viminfo.txt " viminfo保存先指定
