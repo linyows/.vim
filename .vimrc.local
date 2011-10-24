@@ -19,4 +19,9 @@
     " php-debug {{{
         let g:php_debug_mail    = "linyows@gmail.com"
     " }}}
+
+    "{{{
+        let g:nonopaste_nick = "linyows"
+        let g:nonopaste_url = "http://www.kazeburo.dotcloud.com/"
+    "}}}
 " }}}

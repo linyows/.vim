@@ -99,6 +99,8 @@
         Bundle 'tpope/vim-haml'
         " JSLint fork (need SpiderMonkey, Rhino, Node)
         Bundle 'basyura/jslint.vim'
+        " no no past (:Nonopaste, :'<,'>Nonopaste)
+        Bundle 'banyan/Nonopaste.vim'
     " }}}
 
     " Git {{{
