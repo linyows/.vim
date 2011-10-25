@@ -101,6 +101,8 @@
         Bundle 'basyura/jslint.vim'
         " no no past (:Nonopaste, :'<,'>Nonopaste)
         Bundle 'banyan/Nonopaste.vim'
+        " :CopyPath, :CopyFileName
+        Bundle 'taku-o/vim-copypath'
     " }}}
 
     " Git {{{
@@ -138,7 +140,7 @@
     " Unite {
         Bundle 'Shougo/unite.vim'
         "see more plugin http://bit.ly/m5PKnU
-        Bundle 'Shougo/unite-grep'
+        Bundle 'Sixeight/unite-grep'
         Bundle 'tsukkee/unite-help'
         Bundle 'h1mesuke/unite-outline'
         Bundle 'linyows/unite-li3'
@@ -201,7 +203,7 @@
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
-            call togglebg#map("<F5>")
+            "call togglebg#map("<F5>")
             let g:solarized_termcolors=256
             let g:solarized_termtrans=1
             let g:solarized_degrade=0
