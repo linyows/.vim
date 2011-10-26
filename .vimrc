@@ -99,6 +99,10 @@
         Bundle 'tpope/vim-haml'
         " JSLint fork (need SpiderMonkey, Rhino, Node)
         Bundle 'basyura/jslint.vim'
+        " no no past (:Nonopaste, :'<,'>Nonopaste)
+        Bundle 'banyan/Nonopaste.vim'
+        " :CopyPath, :CopyFileName
+        Bundle 'taku-o/vim-copypath'
     " }}}
 
     " Git {{{
@@ -138,7 +142,7 @@
     " Unite {
         Bundle 'Shougo/unite.vim'
         "see more plugin http://bit.ly/m5PKnU
-        Bundle 'Shougo/unite-grep'
+        Bundle 'Sixeight/unite-grep'
         Bundle 'tsukkee/unite-help'
         Bundle 'h1mesuke/unite-outline'
         Bundle 'linyows/unite-li3'
@@ -201,7 +205,7 @@
             "colorscheme moss
             "colorscheme getafe
             "colorscheme Tomorrow-Night
-            call togglebg#map("<F5>")
+            "call togglebg#map("<F5>")
             let g:solarized_termcolors=256
             let g:solarized_termtrans=1
             let g:solarized_degrade=0
@@ -346,7 +350,8 @@
                 set lines=50               " window縦
                 "set showtabline=2         " タブを常に表示
                 "set imdisable             " IMを無効化
-                set transparency=10       " 透明度
+                autocmd FocusGained * set transparency=10     " フォーカス時透明度
+                autocmd FocusLost * set transparency=80       " フォーカスしてない時透明度
                 set antialias             " アンチエイリアス
                 set guifont=VL_Gothic:h12 " フォント
             endif
@@ -392,16 +397,16 @@
 
 " Indent {{{
     autocmd FileType apache     setlocal sw=4 sts=4 ts=4 et
-    autocmd FileType aspvbs     setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType aspvbs     setlocal sw=4 sts=4 ts=4 et
     autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
     autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
     autocmd FileType cs         setlocal sw=4 sts=4 ts=4 et
-    autocmd FileType css        setlocal sw=4 sts=4 ts=4 noet
-    autocmd FileType diff       setlocal sw=4 sts=4 ts=4 noet
-    autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 noet
-    autocmd FileType html       setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
     autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
-    autocmd FileType javascript setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
     autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
     autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
     autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
@@ -409,11 +414,11 @@
     autocmd FileType haml       setlocal sw=2 sts=2 ts=2 et
     autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
     autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
-    autocmd FileType vb         setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType vb         setlocal sw=4 sts=4 ts=4 et
     autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
     autocmd FileType wsh        setlocal sw=4 sts=4 ts=4 et
-    autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 noet
-    autocmd FileType xml        setlocal sw=4 sts=4 ts=4 noet
+    autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
+    autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
     autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
     autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
     autocmd FileType scala      setlocal sw=2 sts=2 ts=2 et
@@ -829,9 +834,9 @@
 
     " Save Option {{{
         " 行末の空白除去
-        autocmd BufWritePre * :%s/\s\+$//ge
+        " autocmd BufWritePre * :%s/\s\+$//ge
         " tabを4スペースに変換
-        autocmd BufWritePre * :%s/\t/    /ge
+        " autocmd BufWritePre * :%s/\t/    /ge
     " }}}
 
     " VimrcLocalFile {{{
