@@ -131,6 +131,8 @@
         Bundle 'Shougo/vimshell'
         " vimでssh
         Bundle 'ujihisa/vimshell-ssh'
+        " search word like vimperator
+        Bundle 'Lokaltog/vim-easymotion'
     " }}}
 
     " Unite {
@@ -733,6 +735,12 @@
         " ESCキーを2回押すと終了する
         au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
         au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+
+        " <C-k> にマッピング http://vim-users.jp/2010/11/hack185/
+        imap <C-k> <Plug>(neocomplcache_snippets_expand)
+        smap <C-k> <Plug>(neocomplcache_snippets_expand)
+        inoremap <expr><C-g> neocomplcache#undo_completion()
+        inoremap <expr><C-l> neocomplcache#complete_common_string()
     " }}}
 
     " unite-plugins {{{
