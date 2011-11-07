@@ -19,8 +19,13 @@
     " php-debug {{{
         let g:php_debug_mail    = "linyows@gmail.com"
     " }}}
+    "
+    "{{{ Gist
+        let g:github_user = 'linyows'
+        let g:github_token = ''
+    "}}}
 
-    "{{{
+    "{{{ Nonopaste
         let g:nonopaste_nick = "linyows"
         let g:nonopaste_url = "http://www.kazeburo.dotcloud.com/"
     "}}}
