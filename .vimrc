@@ -137,6 +137,8 @@
         Bundle 'ujihisa/vimshell-ssh'
         " search word like vimperator
         Bundle 'Lokaltog/vim-easymotion'
+        " ステータスラインに顔文字を表示
+        Bundle 'mattn/hahhah-vim'
     " }}}
 
     " Unite {
